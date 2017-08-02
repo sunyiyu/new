@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/common.css"/>
+    <style>
+        .slider{
+            width: 520px;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+        .slider .img-list{
+            width: 4000px;
+        }
+        .slider .img-list li{
+            float: left;
+        }
+        .slider .img-list li img{
+            width: 520px;
+            height: 280px;
+        }
+        .slider .dots{
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        .slider .dots .dot{
+            width: 10px;
+            height: 10px;
+            background-color: #F00;
+            border-radius: 50%;
+            margin:0 2px;
+            -webkit-box-shadow: 1px 2px 10px #000000;
+            -moz-box-shadow: 1px 2px 10px #000000;
+            box-shadow: 1px 2px 10px #000000;
+            display: inline-block;
+            *dispaly:inline;
+            *zoom:1;
+            /*dipplay:inline-blok不兼容ie6，*内容兼容ie6*/
+        }
+        .slider .dots .dot.active{
+            background-color: #ae0000;
+        }
+        .slider .arrow{
+            display: inline-block;
+            width: 20px;
+            height: 40px;
+            line-height: 40px;
+            background: rgba(0,0,0,0.5);
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            text-decoration: none;
+            color: #ffffff;
+            text-align: center;
+        }
+        .slider .arrow:hover{
+            background: rgba(0,0,0,0.8);
+        }
+        .slider .arrow.right{
+            position: absolute;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <ul class="img-list cf">
+            <li><img src="https://img.alicdn.com/tfs/TB1ILwrQFXXXXXtXFXXXXXXXXXX-520-280.jpg_q90_.webp" alt=""/></li>
+            <li><img src="https://img.alicdn.com/simba/img/TB1F_ZYQFXXXXcSXpXXSutbFXXX.jpg" alt=""/></li>
+            <li><img src="https://img.alicdn.com/simba/img/TB1WWZEQFXXXXXoXpXXSutbFXXX.jpg" alt=""/></li>
+            <li><img src="https://img.alicdn.com/tfs/TB102DLQFXXXXaFXFXXXXXXXXXX-520-280.jpg_q90_.webp" alt=""/></li>
+        </ul>
+        <div class="dots">
+            <a href="#none" class="dot"></a>
+            <a href="#none" class="dot active"></a>
+            <a href="#none" class="dot"></a>
+            <a href="#none" class="dot"></a>
+        </div>
+        <a class="arrow" href="#none"><</a>
+        <a class="arrow right" href="#none">></a>
+    </div>
+</body>
+</html>

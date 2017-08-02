@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" href="css/common.css">
+	<style type="text/css">
+		.xiaoming {
+			padding-left: 20px;
+		}
+		.xiaoming:after {
+			content: '';
+			background-color: rgba(255, 255, 255, 0.3);
+			width: 30px;
+			height: 130px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			transition: all .6s ease-in-out;
+			transform: skewX(-30deg) translate(-100px);
+		}
+
+		.xiaoming:hover:after {
+			transform: skewX(-30deg) translate(340px);
+		}
+	</style>
+</head>
+<body>
+
+<div class="xiaoming">
+	<img src="http://img30.360buyimg.com/jr_image/jfs/t3943/198/1201160477/17676/4e4ae11/586b5b09N6c946d97.jpg" alt="">
+</div>
+
+</body>
+</html>

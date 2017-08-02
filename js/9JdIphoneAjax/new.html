@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #table {
+            border: 1px solid gray;
+            border-collapse: collapse;
+            width: 500px;
+        }
+        tr {
+            height: 30px;
+        }
+        th {
+            border: 1px solid gray;
+        }
+        td {
+            border: 1px solid gray;
+            text-align: center;
+        }
+        td a {
+            margin-right: 5px;
+            color: blue;
+            text-decoration: none;
+        }
+        #popDiv, #editDiv {
+            border: 1px solid silver;
+            width: 315px;
+            padding: 1px;
+            margin-top: 10px;
+            position: absolute;
+            left: 38%;
+            z-index: 4;
+            display: none;
+        }
+        .pop p {
+            height: 30px;
+            margin-top: 20px;
+            clear: both;
+        }
+        .pop a {
+            display: block;
+            float: right;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .pop .input {
+            height: 20px;
+            line-height: 20px;
+        }
+
+        #sub {
+            display: block;
+            height: 30px;
+            margin: 0 auto;
+        }
+        .mask {
+            background-color: #000;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <table id="table">
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>职位</th>
+            <th>工资</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td>23</td>
+            <td>PHP</td>
+            <td>79999</td>
+            <td><a href="#" class="edit">修改</a>
+            </td>
+        </tr>
+        <tr>
+            <td>李四</td>
+            <td>21</td>
+            <td>Java</td>
+            <td>12000</td>
+            <td><a href="#" class="edit">修改</a>
+            </td>
+        </tr>
+        <tr>
+            <td>王五</td>
+            <td>34</td>
+            <td>Python</td>
+            <td>29999</td>
+            <td><a href="#" class="edit">修改</a>
+            </td>
+        </tr>
+        <tr>
+            <td>赵六</td>
+            <td>37</td>
+            <td>Javascript</td>
+            <td>65450</td>
+            <td><a href="#" class="edit">修改</a>
+            </td>
+        </tr>
+    </table>
+    <div id="editDiv" class="pop"> <a href="#" class="close">close</a>
+        <p>
+            <strong>姓名：</strong>
+            <input type="text" class="input" />
+        </p>
+        <p>
+            <strong>年龄：</strong>
+            <input type="text" class="input" />
+        </p>
+        <p>
+            <strong>职位：</strong>
+            <input type="text" class="input" />
+        </p>
+        <p>
+            <strong>工资：</strong>
+            <input type="text" class="input" />
+        </p>
+        <input type="button" id="sub" value="提交" />
+    </div>
+</body>
+<script src="js/jquery.js"></script>
+<script>
+    $('a.edit').click(function () {
+//        console.log($('a.edit'));
+        var arr = [];
+
+        $(this).parent().siblings().each(function () {//循环修td，将值放入数组；
+            arr.push($(this).text());
+        });
+
+        $('#editDiv').show().find('p').each(function (i) {//循环隐藏的p.存入数组中的值赋给input；
+            $(this).find('input:text').val(arr[i]);
+        });
+
+        var aTr = $(this);
+
+        $('#sub').click(function () {
+            alert('2222222');
+            var data = [];
+            $(this).prevUntil('a.close').each(function () {
+                data.push($(this).find('input:text').val());
+            });
+
+            data.reverse();
+
+            aTr.parent().siblings().each(function (i) {
+                $(this).text(data[i]);
+            });
+
+            $(this).parent().hide();
+            $('div.mask').remove();
+        });
+
+        // 添加遮罩层
+        var maskHeight = $(document).height();
+        var maskWidth = $(document).width();
+        $('<div class="mask"></div>').appendTo($('body'));
+        $('div.mask').css({
+            'width': maskWidth,
+            'height': maskHeight,
+            'opacity': 0.4
+        });
+    });
+
+    $('a.close').click(function () {
+        $(this).parent().hide();
+        $('div.mask').remove();
+    });
+</script>
+</html>

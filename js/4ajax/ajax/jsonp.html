@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSONP</title>
+</head>
+<body>
+
+<input type="checkbox" name="item" value="1361302288"> 手机钢化膜
+<input type="checkbox" name="item" value="1727620"> 冷暖空调
+<input type="checkbox" name="item" value="4543296"> 智能手机
+<input type="checkbox" name="item" value="10943960651"> 蛋黄酥
+<input type="checkbox" name="item" value="10723181840"> 围巾
+
+<button id="search">查询价格</button>
+
+<script type="text/javascript">
+    function jsonpCallback(skuStr) {
+        var jsonp = document.createElement("script");
+        jsonp.type = "text/javascript";
+        jsonp.src = "http://p.3.cn/prices/mgets?callback=xxx&skuIds=" + skuStr;
+        console.log(jsonp.src);
+        document.getElementsByTagName("head")[0].appendChild(jsonp);
+    }
+
+    var search = document.getElementById('search');
+    search.addEventListener("click", function () {
+        var checkboxs = document.getElementsByName('item');
+        var skuArr = [];
+        for(var i = 0; i < checkboxs.length; i++) {
+            if(checkboxs[i].checked){
+                skuArr.push('J_' + checkboxs[i].value);
+            }
+        }
+        var skuStr = skuArr.join(',');
+        console.log(skuStr);
+        jsonpCallback(skuStr);
+    });
+
+    function xxx(data) {
+        for(var i in data) {
+            var obj = data[i];
+            var sku = obj.id.substr(2);
+            var checkboxs = document.getElementsByName('item');
+            for(var i = 0; i < checkboxs.length; i++) {
+                if(checkboxs[i].value == sku) {
+                    checkboxs[i].nextSibling.nodeValue += obj.p;
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

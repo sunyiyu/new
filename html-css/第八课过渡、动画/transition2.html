@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" href="css/common.css">
+	<style type="text/css">
+		.grid {
+			float: left;
+			display: block;
+			border-bottom: 1px solid #f5f5f5;
+			border-right: 1px solid #f5f5f5;
+			position: relative;
+			background-color: #fff;
+			width: 244px;
+			height: 220px;
+		}
+
+		.grid .title {
+			position: absolute;
+			top: 25px;
+			left: 25px;
+			width: 220px;
+			font-size: 18px;
+			z-index: 10;
+			line-height: 24px;
+			height: 24px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			color: #000;
+		}
+
+		.grid .sub-title {
+			position: absolute;
+			top: 54px;
+			left: 25px;
+			width: 220px;
+			font-size: 14px;
+			z-index: 10;
+			line-height: 18px;
+			height: 18px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			color: #64C333;
+		}
+
+		.grid img {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			z-index: 1;
+		}
+
+		.grid.one-grid img {
+			width: 154px;
+			height: 154px;
+		}
+		.grid:hover img{
+			transform-origin: bottom right;
+			transform:scale(1.5) ;
+			transition: all 1s ease-out;
+		}
+		.grid:hover .title,.grid:hover .sub-title{
+			transform-origin: top left;
+			transform: translate(0,-100px);
+			transition: all 1s ;
+		}
+	</style>
+</head>
+<body>
+<a class="grid one-grid" href="#">
+	<div class="title">好糕点配好茶</div>
+	<div class="sub-title">吃早茶不将就</div>
+	<img src="//img.alicdn.com/i2/2/TB1MOVuQXXXXXagXVXXSutbFXXX.jpg">
+</a>
+<a class="grid one-grid" href="#">
+	<div class="title">好糕点配好茶</div>
+	<div class="sub-title">吃早茶不将就</div>
+	<img src="//img.alicdn.com/i2/2/TB1MOVuQXXXXXagXVXXSutbFXXX.jpg">
+</a>
+<a class="grid one-grid" href="#">
+	<div class="title">好糕点配好茶</div>
+	<div class="sub-title">吃早茶不将就</div>
+	<img src="//img.alicdn.com/i2/2/TB1MOVuQXXXXXagXVXXSutbFXXX.jpg">
+</a>
+</body>
+</html>

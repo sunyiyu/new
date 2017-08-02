@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>百度外卖</title>
+
+	<!-- Bootstrap -->
+	<link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/baiduwaimai.css">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#waimai-navbar-collapse" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">百度外卖</a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="waimai-navbar-collapse">
+			<form class="navbar-form navbar-left">
+				<div class="input-group">
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">北京<span class="caret"></span></button>
+						<ul class="dropdown-menu">
+							<li><a href="#">安国</a></li>
+							<li><a href="#">安平</a></li>
+							<li><a href="#">安庆</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">繁昌</a></li>
+						</ul>
+					</div>
+					<input type="text" class="form-control" aria-label="..." placeholder="请输入送餐地址">
+				</div>
+				<div class="input-group hidden-sm">
+					<div class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+					<input type="text" class="form-control" id="exampleInputAmount" placeholder="搜索商户或商品">
+				</div>
+			</form>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">外卖</a></li>
+				<li><a href="#">我的订单</a></li>
+				<li><a href="#">联系我们</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">你好，张三<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">我的订单</a></li>
+						<li><a href="#">送餐地址</a></li>
+						<li><a href="#">收藏夹</a></li>
+						<li><a href="#">代金券</a></li>
+						<li><a href="#">我的余额</a></li>
+						<li><a href="#">我的退款</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">退出</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+	<div class="row">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#">附近的餐厅</a></li>
+			<li><a href="#">超市购</a></li>
+		</ul>
+	</div>
+	<div class="row category-nav">
+		<ul class="nav nav-pills">
+			<li class="active"><a href="#"><span class="glyphicon glyphicon-glass"></span>全部</a></li>
+			<li><a href="#">小吃</a></li>
+			<li><a href="#">快餐</a></li>
+			<li><a href="#">地方菜</a></li>
+			<li><a href="#">西式快餐</a></li>
+			<li><a href="#">异国风味</a></li>
+			<li><a href="#">中式正餐</a></li>
+			<li><a href="#">烧烤海鲜</a></li>
+			<li><a href="#">甜点饮品</a></li>
+			<li><a href="#">水果生鲜</a></li>
+			<li><a href="#">下午茶</a></li>
+			<li><a href="#">鲜花蛋糕</a></li>
+			<li><a href="#">超市购</a></li>
+			<li><a href="#">夜宵</a></li>
+			<li><a href="#">送药上门</a></li>
+			<li><a href="#">清真</a></li>
+		</ul>
+	</div>
+	<div class="row sort-nav">
+		<ul class="nav">
+			<a href="#" class="btn btn-info active" data-toggle="button" aria-pressed="false" autocomplete="off">默认</a>
+			<a href="#" class="btn btn-info" data-toggle="button" aria-pressed="false" autocomplete="off">销量 <span class="glyphicon glyphicon-arrow-up"></span></a>
+			<a href="#" class="btn btn-info" data-toggle="button" aria-pressed="false" autocomplete="off">餐厅距离 <span class="glyphicon glyphicon-arrow-up"></span></a>
+			<a href="#" class="btn btn-info" data-toggle="button" aria-pressed="false" autocomplete="off">评分 <span class="glyphicon glyphicon-arrow-down"></span></a>
+			<a href="#" class="btn btn-info" data-toggle="button" aria-pressed="false" autocomplete="off">起送价 <span class="glyphicon glyphicon-arrow-up"></span></a>
+			<a href="#" class="btn btn-info" data-toggle="button" aria-pressed="false" autocomplete="off">送餐速度 <span class="glyphicon glyphicon-arrow-up"></span></a>
+		</ul>
+	</div>
+	<div class="row seller-list">
+		<div class="col-xs-6 col-sm-4 col-md-3" data-placement="auto right" data-trigger="hover" data-toggle="popover" data-html="true" title='汉拿山（北苑易世达店）<span class="badge">证</span><p class="text-muted">支持查看政府认可的资质证照</p>' data-content='<p>商家公告</p><p class="text-muted">汉拿山是由中国人出资创办，中国人自主经营和管理的本土企业，汉拿山致力于服务中国消费者。</p>'>
+			<div class="thumbnail">
+				<img src="https://img.waimai.baidu.com/pb/e30fde0ef3e4a759d164bed590279b81f6@s_0,w_228,h_140,q_100" alt="庆丰包子铺">
+				<div class="caption">
+					<h3>庆丰包子铺  <span class="badge">证</span></h3>
+					<p class="pull-left star">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</p>
+					<span>月售981份</span>
+					<div class="clearfix"></div>
+					<p>
+						<span>起送: ¥20</span>
+						<span>配送: ¥4</span>
+						<span class="pull-right">30分钟</span>
+					</p>
+					<p><a href="#" class="btn btn-danger" role="button">购买</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-4 col-md-3" data-placement="auto right" data-trigger="hover" data-toggle="popover" data-html="true" title='汉拿山（北苑易世达店）<span class="badge">证</span><p class="text-muted">支持查看政府认可的资质证照</p>' data-content='<p>商家公告</p><p class="text-muted">汉拿山是由中国人出资创办，中国人自主经营和管理的本土企业，汉拿山致力于服务中国消费者。</p>'>
+			<div class="thumbnail">
+				<img src="https://img.waimai.baidu.com/pb/ce7c005e52566620d8f7ac94933b410279@s_0,w_228,h_140,q_100" alt="庆丰包子铺">
+				<div class="caption">
+					<h3>庆丰包子铺  <span class="badge">证</span></h3>
+					<p class="pull-left star">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</p>
+					<span>月售981份</span>
+					<div class="clearfix"></div>
+					<p>
+						<span>起送: ¥20</span>
+						<span>配送: ¥4</span>
+						<span class="pull-right">30分钟</span>
+					</p>
+					<p><a href="#" class="btn btn-danger" role="button">购买</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-4 col-md-3" data-placement="auto right" data-trigger="hover" data-toggle="popover" data-html="true" title='汉拿山（北苑易世达店）<span class="badge">证</span><p class="text-muted">支持查看政府认可的资质证照</p>' data-content='<p>商家公告</p><p class="text-muted">汉拿山是由中国人出资创办，中国人自主经营和管理的本土企业，汉拿山致力于服务中国消费者。</p>'>
+			<div class="thumbnail">
+				<img src="https://img.waimai.baidu.com/pb/65404c2e99bd1e64d57e668ddf1f4e74f1@s_0,w_228,h_140,q_100" alt="庆丰包子铺">
+				<div class="caption">
+					<h3>庆丰包子铺  <span class="badge">证</span></h3>
+					<p class="pull-left star">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</p>
+					<span>月售981份</span>
+					<div class="clearfix"></div>
+					<p>
+						<span>起送: ¥20</span>
+						<span>配送: ¥4</span>
+						<span class="pull-right">30分钟</span>
+					</p>
+					<p><a href="#" class="btn btn-danger" role="button">购买</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-4 col-md-3" data-placement="auto right" data-trigger="hover" data-toggle="popover" data-html="true" title='汉拿山（北苑易世达店）<span class="badge">证</span><p class="text-muted">支持查看政府认可的资质证照</p>' data-content='<p>商家公告</p><p class="text-muted">汉拿山是由中国人出资创办，中国人自主经营和管理的本土企业，汉拿山致力于服务中国消费者。</p>'>
+			<div class="thumbnail">
+				<img src="https://img.waimai.baidu.com/pb/4c923c5e2552b365d87e30b1e581186059@s_0,w_228,h_140,q_100" alt="庆丰包子铺">
+				<div class="caption">
+					<h3>庆丰包子铺  <span class="badge">证</span></h3>
+					<p class="pull-left star">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</p>
+					<span>月售981份</span>
+					<div class="clearfix"></div>
+					<p>
+						<span>起送: ¥20</span>
+						<span>配送: ¥4</span>
+						<span class="pull-right">30分钟</span>
+					</p>
+					<p><a href="#" class="btn btn-danger" role="button">购买</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-4 col-md-3" data-placement="auto right" data-trigger="hover" data-toggle="popover" data-html="true" title='汉拿山（北苑易世达店）<span class="badge">证</span><p class="text-muted">支持查看政府认可的资质证照</p>' data-content='<p>商家公告</p><p class="text-muted">汉拿山是由中国人出资创办，中国人自主经营和管理的本土企业，汉拿山致力于服务中国消费者。</p>'>
+			<div class="thumbnail">
+				<img src="https://img.waimai.baidu.com/pb/076da7b4dda34b1ec7a3d23266b1fba7e7@s_0,w_228,h_140,q_100" alt="庆丰包子铺">
+				<div class="caption">
+					<h3>庆丰包子铺  <span class="badge">证</span></h3>
+					<p class="pull-left star">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</p>
+					<span>月售981份</span>
+					<div class="clearfix"></div>
+					<p>
+						<span>起送: ¥20</span>
+						<span>配送: ¥4</span>
+						<span class="pull-right">30分钟</span>
+					</p>
+					<p><a href="#" class="btn btn-danger" role="button">购买</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-4 col-md-3" data-placement="auto right" data-trigger="hover" data-toggle="popover" data-html="true" title='汉拿山（北苑易世达店）<span class="badge">证</span><p class="text-muted">支持查看政府认可的资质证照</p>' data-content='<p>商家公告</p><p class="text-muted">汉拿山是由中国人出资创办，中国人自主经营和管理的本土企业，汉拿山致力于服务中国消费者。</p>'>
+			<div class="thumbnail">
+				<img src="https://img.waimai.baidu.com/pb/52ed5aab32a76a72245bcd70fd59199b21@s_0,w_228,h_140,q_100" alt="庆丰包子铺">
+				<div class="caption">
+					<h3>庆丰包子铺  <span class="badge">证</span></h3>
+					<p class="pull-left star">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</p>
+					<span>月售981份</span>
+					<div class="clearfix"></div>
+					<p>
+						<span>起送: ¥20</span>
+						<span>配送: ¥4</span>
+						<span class="pull-right">30分钟</span>
+					</p>
+					<p><a href="#" class="btn btn-danger" role="button">购买</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-4 col-md-3" data-placement="auto right" data-trigger="hover" data-toggle="popover" data-html="true" title='汉拿山（北苑易世达店）<span class="badge">证</span><p class="text-muted">支持查看政府认可的资质证照</p>' data-content='<p>商家公告</p><p class="text-muted">汉拿山是由中国人出资创办，中国人自主经营和管理的本土企业，汉拿山致力于服务中国消费者。</p>'>
+			<div class="thumbnail">
+				<img src="https://img.waimai.baidu.com/pb/a3710d6a0cbddab30601fe403296578bc9@s_0,w_228,h_140,q_100" alt="庆丰包子铺">
+				<div class="caption">
+					<h3>庆丰包子铺  <span class="badge">证</span></h3>
+					<p class="pull-left star">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</p>
+					<span>月售981份</span>
+					<div class="clearfix"></div>
+					<p>
+						<span>起送: ¥20</span>
+						<span>配送: ¥4</span>
+						<span class="pull-right">30分钟</span>
+					</p>
+					<p><a href="#" class="btn btn-danger" role="button">购买</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-4 col-md-3" data-placement="auto right" data-trigger="hover" data-toggle="popover" data-html="true" title='汉拿山（北苑易世达店）<span class="badge">证</span><p class="text-muted">支持查看政府认可的资质证照</p>' data-content='<p>商家公告</p><p class="text-muted">汉拿山是由中国人出资创办，中国人自主经营和管理的本土企业，汉拿山致力于服务中国消费者。</p>'>
+			<div class="thumbnail">
+				<img src="https://img.waimai.baidu.com/pb/48499cd3967946c51cf09a3982f6f51273@s_0,w_228,h_140,q_100" alt="庆丰包子铺">
+				<div class="caption">
+					<h3>庆丰包子铺  <span class="badge">证</span></h3>
+					<p class="pull-left star">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</p>
+					<span>月售981份</span>
+					<div class="clearfix"></div>
+					<p>
+						<span>起送: ¥20</span>
+						<span>配送: ¥4</span>
+						<span class="pull-right">30分钟</span>
+					</p>
+					<p><a href="#" class="btn btn-danger" role="button">购买</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-4 col-md-3" data-placement="auto right" data-trigger="hover" data-toggle="popover" data-html="true" title='汉拿山（北苑易世达店）<span class="badge">证</span><p class="text-muted">支持查看政府认可的资质证照</p>' data-content='<p>商家公告</p><p class="text-muted">汉拿山是由中国人出资创办，中国人自主经营和管理的本土企业，汉拿山致力于服务中国消费者。</p>'>
+			<div class="thumbnail">
+				<img src="https://img.waimai.baidu.com/pb/e30fde0ef3e4a759d164bed590279b81f6@s_0,w_228,h_140,q_100" alt="庆丰包子铺">
+				<div class="caption">
+					<h3>庆丰包子铺  <span class="badge">证</span></h3>
+					<p class="pull-left star">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</p>
+					<span>月售981份</span>
+					<div class="clearfix"></div>
+					<p>
+						<span>起送: ¥20</span>
+						<span>配送: ¥4</span>
+						<span class="pull-right">30分钟</span>
+					</p>
+					<p><a href="#" class="btn btn-danger" role="button">购买</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-4 col-md-3" data-placement="auto right" data-trigger="hover" data-toggle="popover" data-html="true" title='汉拿山（北苑易世达店）<span class="badge">证</span><p class="text-muted">支持查看政府认可的资质证照</p>' data-content='<p>商家公告</p><p class="text-muted">汉拿山是由中国人出资创办，中国人自主经营和管理的本土企业，汉拿山致力于服务中国消费者。</p>'>
+			<div class="thumbnail">
+				<img src="https://img.waimai.baidu.com/pb/e30fde0ef3e4a759d164bed590279b81f6@s_0,w_228,h_140,q_100" alt="庆丰包子铺">
+				<div class="caption">
+					<h3>庆丰包子铺  <span class="badge">证</span></h3>
+					<p class="pull-left star">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</p>
+					<span>月售981份</span>
+					<div class="clearfix"></div>
+					<p>
+						<span>起送: ¥20</span>
+						<span>配送: ¥4</span>
+						<span class="pull-right">30分钟</span>
+					</p>
+					<p><a href="#" class="btn btn-danger" role="button">购买</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-4 col-md-3" data-placement="auto right" data-trigger="hover" data-toggle="popover" data-html="true" title='汉拿山（北苑易世达店）<span class="badge">证</span><p class="text-muted">支持查看政府认可的资质证照</p>' data-content='<p>商家公告</p><p class="text-muted">汉拿山是由中国人出资创办，中国人自主经营和管理的本土企业，汉拿山致力于服务中国消费者。</p>'>
+			<div class="thumbnail">
+				<img src="https://img.waimai.baidu.com/pb/e30fde0ef3e4a759d164bed590279b81f6@s_0,w_228,h_140,q_100" alt="庆丰包子铺">
+				<div class="caption">
+					<h3>庆丰包子铺  <span class="badge">证</span></h3>
+					<p class="pull-left star">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</p>
+					<span>月售981份</span>
+					<div class="clearfix"></div>
+					<p>
+						<span>起送: ¥20</span>
+						<span>配送: ¥4</span>
+						<span class="pull-right">30分钟</span>
+					</p>
+					<p><a href="#" class="btn btn-danger" role="button">购买</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-4 col-md-3" data-placement="auto right" data-trigger="hover" data-toggle="popover" data-html="true" title='汉拿山（北苑易世达店）<span class="badge">证</span><p class="text-muted">支持查看政府认可的资质证照</p>' data-content='<p>商家公告</p><p class="text-muted">汉拿山是由中国人出资创办，中国人自主经营和管理的本土企业，汉拿山致力于服务中国消费者。</p>'>
+			<div class="thumbnail">
+				<img src="https://img.waimai.baidu.com/pb/e30fde0ef3e4a759d164bed590279b81f6@s_0,w_228,h_140,q_100" alt="庆丰包子铺">
+				<div class="caption">
+					<h3>庆丰包子铺  <span class="badge">证</span></h3>
+					<p class="pull-left star">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</p>
+					<span>月售981份</span>
+					<div class="clearfix"></div>
+					<p>
+						<span>起送: ¥20</span>
+						<span>配送: ¥4</span>
+						<span class="pull-right">30分钟</span>
+					</p>
+					<p><a href="#" class="btn btn-danger" role="button">购买</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$('[data-toggle="popover"]').popover()
+	})
+</script>
+</body>
+</html>

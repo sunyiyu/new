@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+       <style>
+           .wb-byyg-xbcyj-product-02 {
+               font-family: "Microsoft Yahei";
+               font-size: 12px
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap ul {
+               list-style: none
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap a,.wb-byyg-xbcyj-product-02 .module-wrap a:hover {
+               text-decoration: none
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product {
+               background: #5272ff;
+               width: 100%;
+               overflow: hidden
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .title {
+               width: 990px;
+               margin: 0 auto;
+               display: block
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list {
+               width: 1000px;
+               margin: 0 auto;
+               overflow: hidden
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list li {
+               float: left;
+               width: 240px;
+               position: relative;
+               overflow: hidden;
+               margin-right: 10px;
+               margin-bottom: 10px
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list li a {
+               text-decoration: none;
+               display: block
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list li a img {
+               width: 240px;
+               height: 240px;
+               display: block
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list li a .pro_message {
+               width: 240px;
+               height: 90px;
+               padding: 10px;
+               background: #fff
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list li a .pro_message p {
+               width: 220px;
+               height: 30px;
+               color: #ff3846;
+               font-size: 20px;
+               text-align: center;
+               line-height: 30px;
+               overflow: hidden
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list li a .pro_message p .cyj {
+               display: inline-block;
+               width: 34px;
+               height: 17px;
+               background: url(https://img.alicdn.com/tfs/TB1p.LDQFXXXXceXpXXXXXXXXXX-34-17.jpg) no-repeat;
+               vertical-align: middle;
+               margin-right: 3px
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list li a .pro_message p .price {
+               font-size: 22px;
+               font-weight: 700
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list li a .pro_message p s {
+               color: #b8b8b8;
+               font-size: 14px;
+               margin-right: 3px
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list li a .pro_message .pro_title {
+               height: 35px;
+               color: #000;
+               line-height: 35px;
+               overflow: hidden
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list li .btn {
+               width: 240px;
+               height: 40px
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list li .btn a {
+               text-decoration: none;
+               display: block;
+               float: left;
+               width: 120px;
+               height: 40px;
+               text-align: center;
+               line-height: 40px;
+               color: #fff;
+               font-size: 18px
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list li .btn .ticket {
+               background: #8f76ff
+           }
+
+           .wb-byyg-xbcyj-product-02 .module-wrap .product .pro_list li .btn .shop {
+               background: #f83f7c
+           }
+       </style>
+</head>
+<body>
+<div class="wb-byyg-xbcyj-product-02">
+    <div class="module-wrap">
+        <div class="layout layout-grid-0">
+            <div class="grid-0">
+                <div class="col col-main">
+                    <div class="main-wrap J_Region">
+                        <div class="product">
+                            <ul id="pro_list" class="pro_list">
+                                <li>
+                                    <a href="//item.taobao.com/item.htm?id=548424126075" target="_blank">
+                                        <img src="//gw.alicdn.com/bao/uploaded/TB1YwYcQFXXXXcxXVXXSutbFXXX.jpg_q10" alt="">
+                                        <div class="pro_message">
+                                            <p class="pro_title">顺丰速递终身质保</p>
+                                            <p>
+                                                <span class="cyj"></span>
+                                                ¥<span class="price">194.04</span>
+                                                <s class="current_price">¥396.00</s>
+                                            </p>
+                                        </div>
+                                    </a>
+                                    <div class="btn">
+                                        <a class="ticket" href="//shop35557341.taobao.com/" target="_blank">进店领券&nbsp;&gt;</a>
+                                        <a class="shop" href="//item.taobao.com/item.htm?id=548424126075" target="_blank">立即抢购&nbsp;&gt;</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../jquery.js"></script>
+<script src="../trimPath.js"></script>
+<script>
+    $(function () {
+
+        var $pro_list = $('#pro_list');
+
+        $.ajax({
+            url: "https://tce.taobao.com/api/mget.htm",
+            data: {
+                tce_sid:[1623389,1623391,1623491,1623494,1623496,1625341].join(',')
+            },
+            dataType: 'jsonp',
+            success: function (result) {
+                console.log(result);
+                if(result.success){
+                    var data = result.result[1623389].result;
+                    var htmlStr = '';
+                    for(var i in data) {
+                        var it = data[i];
+                        console.log(it);
+                        htmlStr += '\
+                        <li>\
+                            <a href="'+ it.item_url +'" target="_blank">\
+                                <img src="'+ it.item_pic+ '" alt="">\
+                                <div class="pro_message">\
+                                    <p class="pro_title">'+it.item_title+'</p>\
+                                    <p>\
+                                        <span class="cyj"></span>\
+                                        ¥<span class="price">'+it.item_current_price+'</span>\
+                                        <s class="current_price">¥'+it.item_price+'</s>\
+                                    </p>\
+                                </div>\
+                            </a>\
+                            <div class="btn">\
+                                <a class="ticket" href="'+it.item_ticket+'" target="_blank">进店领券&nbsp;&gt;</a>\
+                                <a class="shop" href="'+it.item_url+'" target="_blank">立即抢购&nbsp;&gt;</a>\
+                            </div>\
+                        </li>';
+                    }
+                    $pro_list.html(htmlStr);
+                }
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

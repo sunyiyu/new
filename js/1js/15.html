@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串中提取数字求和</title>
+</head>
+<body>
+<script>
+    function Output(str){
+        var sTr=str.split(" ");
+        var arr=0;
+        for(var i in sTr){
+            if(!isNaN(parseInt(sTr[i]))){
+                arr+=parseInt(sTr[i]);
+            }
+        }
+        return arr;
+    }
+    var r=Output('Input:  “We have 30 apples will be handed out to 10 students who need it, containing 5 foreigners ”.')
+    console.log(r);
+</script>
+</body>
+</html>

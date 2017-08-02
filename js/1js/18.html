@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>反转字符串</title>
+</head>
+<body>
+<script>
+    function reverse(str){
+        var a=str.split("");
+        var rs = new Array;
+        while(a.length)
+        {
+            rs.push(a.pop());
+        }
+        return(rs.join(""));
+    }
+    var r = reverse('abcd');
+    console.log(r);
+</script>
+</body>
+</html>

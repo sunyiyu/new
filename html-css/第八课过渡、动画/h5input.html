@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<form action="http://192.168.2.100:8080/getform" id="user_form">
+	text:<input type="text" name="text_search"/><br/>
+	email:<input type="email" name="user_email"/><br/>
+	url:<input type="url" name="user_url" autofocus /><br/>
+	number:<input type="number" name="user_number" min="3" max="100" step="3"/><br/><!--step 步长-->
+	range:<input type="range" name="user_range" min="1" max="10" step="2"/><br/>
+	date:<input type="date" name="user_date" /><br/>
+	month:<input type="month" name="user_month" /><br/>
+	week:<input type="week" name="user_week" /><br/>
+	time:<input type="time" name="user_time" /><br/>
+	datetime:<input type="datetime" name="user_datetime" /><br/>
+	search:<input type="search" name="user_search" list="mylist"/><br/>
+	color:<input type="color" name="user_color"/>
+
+	<datalist id="mylist">
+		<option value="795@t.com">lianyiqun</option>
+		<option value="sss@sina.com.cn">12121</option>
+		<option value="sss222@sina.com.cn">2234111</option>
+		<option></option>
+	</datalist>
+
+	<input type="submit"/>
+</form>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+

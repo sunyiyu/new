@@ -1,0 +1,28 @@
+
+.content h1{
+    font-size: 36px;
+    color: #1b6568;
+}
+.content p{
+    font-size: 16px;
+    color: #4c1407;
+    line-height: 30px;
+}
+.content p span{
+    text-decoration: underline;
+}
+.content ul li{
+    float:left;
+    margin-right:20px;
+    margin-top: 20px;
+}
+.content ul .last {
+    margin-right: 0;
+}
+
+
+
+
+
+
+

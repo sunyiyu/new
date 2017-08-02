@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		#btns a {
+			margin: 0 5px;
+		}
+		.ren {
+			width: 118px;
+			height: 90px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			background: url(images/xulie.png) no-repeat 0 -40px;
+			/*transform-origin: right center;*/
+		}
+
+		.down {
+			background-position: 0 -40px;
+			animation: down_donghua 1s steps(8) infinite;
+		}
+
+		.left {
+			background-position: 0 -152px;
+			animation: left_donghua 1s steps(8) infinite;
+		}
+
+		.right {
+			background-position: 0 -274px;
+			animation: right_donghua 1s steps(8) infinite;
+		}
+
+		@keyframes down_donghua {
+			0% {
+				background-position: 0  -40px;
+			}
+			100% {
+				background-position: -950px -40px;
+			}
+		}
+
+		@keyframes left_donghua {
+			0% {
+				background-position: 0  -152px;
+			}
+			100% {
+				background-position: -950px -152px;
+			}
+		}
+
+
+		@keyframes right_donghua {
+			0% {
+				background-position: 0  -274px;
+			}
+			100% {
+				background-position: -950px -274px;
+			}
+		}
+	</style>
+</head>
+<body>
+<div id="btns">
+</div>
+<div id="ren" class="ren down"></div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	var $btns = $('#btns');
+	var direction = ['down', 'left', 'right', 'top', 'lefttop', 'rightdown', 'lefttop', 'righttop'];
+	direction.forEach(function (i, n) {
+		var $btn = $('<a href="javascript:;">' + i + '</a>');
+		$btns.append($btn);
+		$btn.click(function () {
+			$("#ren").removeClass().addClass('ren ' + $btn.html());
+		});
+	});
+</script>
+</body>
+</html>

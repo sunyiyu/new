@@ -1,0 +1,587 @@
+/*css重置*/
+a{
+    color:#333;
+}
+a:hover{
+    color:#333;
+    text-decoration: none;
+}
+
+ul,ol{
+    list-style: none;
+}
+
+body{
+    font-family: "Microsoft Yahei";
+}
+
+
+/*头部*/
+.wjs-header{
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+    font-size:12px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.wjs-header .row>div{
+    height: 40px;
+    border-left: 1px solid #ccc;
+}
+
+.wjs-header .row>div:nth-child(1){
+    border:none;
+}
+
+/* 申明图标字体*/
+@font-face {
+    font-family: wjsfont;
+    src: url('../font/MiFie-Web-Font.eot') format('embedded-opentype'),
+    url('../font/MiFie-Web-Font.svg') format('svg'),
+    url('../font/MiFie-Web-Font.ttf') format('truetype'),
+    url('../font/MiFie-Web-Font.woff') format('woff');
+}
+
+
+/* 定义类名 在伪元素中 定义字体*/
+
+[class^="icon-"]{
+    font-family: wjsfont;
+}
+
+.icon-phone::before{
+    content:"\e908";
+}
+
+.icon-tel::before{
+    content:"\e909";
+}
+
+.icon-logo::before{
+    content:"\e920";
+}
+
+.icon-text::before{
+    content:"\e93e";
+}
+
+.icon-E903::before{
+    content: "\e903";
+}
+.icon-E906::before{
+    content: "\e906";
+}
+.icon-E905::before{
+    content: "\e905";
+}
+.icon-E907::before{
+    content: "\e907";
+}
+.icon-E901::before{
+    content: "\e901";
+}
+.icon-E900::before{
+    content: "\e900";
+}
+.icon-E904::before{
+    content: "\e904";
+}
+.icon-E902::before{
+    content: "\e902";
+}
+.icon-E906::before{
+    content: "\e906";
+}
+.icon-new01::before{
+    content: "\e90e";
+}
+.icon-new02::before{
+    content: "\e90f";
+}
+.icon-new03::before{
+    content: "\e910";
+}
+.icon-new04::before{
+    content: "\e911";
+}
+.icon-partner01::before{
+    content:"\e946";
+}
+.icon-partner02::before{
+    content: "\e92f";
+}
+.icon-partner03::before{
+    content: "\e92e";
+}
+.icon-partner04::before{
+    content: "\e92a";
+}
+.icon-partner05::before{
+    content: "\e929";
+}
+.icon-partner06::before{
+    content: "\e931";
+}
+.icon-partner07::before{
+    content: "\e92c";
+}
+.icon-partner08::before{
+    content: "\e92b";
+}
+.icon-partner09::before{
+    content: "\e92d";
+}
+
+
+/*按钮*/
+.wjs-header .btn-register {
+    background-color: #e92322;
+    color:#fff;
+    padding:5px 15px;
+    border:none;
+}
+
+.wjs-header .btn-login{
+    border:none;
+}
+
+.wjs-header .btn-login:hover{
+    background-color: #fff;
+}
+
+/*导航样式*/
+.wjs-navbar {
+    background-color: #fff;
+    border-color: #e7e7e7;
+    margin-bottom:0;
+}
+.wjs-navbar .navbar-brand {
+    color: #777;
+    height: 80px;
+    line-height: 50px;
+}
+.wjs-navbar .navbar-brand:hover,
+.wjs-navbar .navbar-brand:focus {
+    color: #5e5e5e;
+    background-color: transparent;
+}
+.wjs-navbar .navbar-text {
+    color: #777;
+}
+.wjs-navbar .navbar-nav > li > a {
+    color: #777;
+    height: 80px;
+    line-height: 50px;
+    border-bottom:3px solid transparent;
+}
+.wjs-navbar .navbar-nav > li > a:hover,
+.wjs-navbar .navbar-nav > li > a:focus {
+    color: #333;
+    background-color: transparent;
+    border-color: red;
+}
+.wjs-navbar .navbar-nav > .active > a,
+.wjs-navbar .navbar-nav > .active > a:hover,
+.wjs-navbar .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+}
+.wjs-navbar .navbar-nav > .disabled > a,
+.wjs-navbar .navbar-nav > .disabled > a:hover,
+.wjs-navbar .navbar-nav > .disabled > a:focus {
+    color: #ccc;
+    background-color: transparent;
+}
+.wjs-navbar .navbar-toggle {
+    border-color: #ddd;
+    margin-top:22px;
+}
+.wjs-navbar .navbar-toggle:hover,
+.wjs-navbar .navbar-toggle:focus {
+    background-color: #ddd;
+}
+.wjs-navbar .navbar-toggle .icon-bar {
+    background-color: #888;
+}
+.wjs-navbar .navbar-collapse,
+.wjs-navbar .navbar-form {
+    border-color: #e7e7e7;
+}
+.wjs-navbar .navbar-nav > .open > a,
+.wjs-navbar .navbar-nav > .open > a:hover,
+.wjs-navbar .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+}
+
+/* 导航头部的样式*/
+.navbar-brand .icon-logo{
+    font-size: 50px;
+    color:red;
+    /* 文字 中线对齐*/
+    vertical-align: middle;
+}
+
+.navbar-brand .icon-text{
+    font-size: 30px;
+    color:#000;
+    /* 文字 中线对齐*/
+    vertical-align: middle;
+}
+
+/* banner模块*/
+.wjs-banner .pc-img{
+    height: 410px;
+    background-position: center top;
+}
+
+.wjs-banner .m-img{
+    width: 100%;
+}
+
+/* 信息模块*/
+.wjs-info{
+    padding:25px 0;
+}
+
+.wjs-info .row>div{
+    margin:10px auto;
+}
+
+.wjs-info .row>div a:hover{
+    color:red;
+}
+
+.wjs-info  .media-left span{
+    font-size: 22px;
+}
+
+/* 在中等 和大屏上 信息模块的版心宽度为910px*/
+
+@media screen and (min-width: 992px){
+    .wjs-info .container{
+        width: 910px;
+    }
+
+    .wjs-book .container{
+        width: 910px;
+    }
+}
+
+/* 预约模块*/
+.wjs-book{
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    padding:30px 0;
+}
+
+.wjs-book .book-link{
+    color:red;
+    border-bottom:1px dashed red;
+}
+
+.wjs-book span[class^='icon-']{
+    font-size: 22px;
+}
+
+.wjs-book .pull-right  a:hover{
+    color:red;
+}
+
+/* 产品模块*/
+.wjs-product{
+    padding:30px 0;
+    border-bottom:1px solid #ccc;
+    background-color: #eee;
+}
+
+/* 产品模块 tab栏头部*/
+
+.product-tabs {
+    border-bottom: 1px solid #ddd;
+}
+.product-tabs > li {
+    float: left;
+}
+.product-tabs > li > a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border-bottom:3px solid transparent;
+
+}
+.product-tabs > li > a:hover {
+    border-color:red;
+}
+.product-tabs > li.active > a,
+.product-tabs > li.active > a:hover,
+.product-tabs > li.active > a:focus {
+    color: #555;
+    cursor: default;
+    border-bottom-color: transparent;
+    border-color:red;
+}
+
+.wjs-product .nav-header{
+    /*overflow: hidden;*/
+    /*overflow: scroll;*/
+    /* 控制水平方向的溢出*/
+    overflow-x: scroll;
+}
+
+/* 产品的内容模块*/
+.wjs-product .tab-content  .row>div{
+    height: 170px;
+}
+
+
+
+.wjs-product .tab-content  .row .product-in{
+    height: 150px;
+    background-color: #fff;
+    margin-top:20px;
+    box-shadow: 2px 2px 3px 1px #d8d8d8
+}
+
+.wjs-product .tab-content   .product-in.current{
+    background-color: red;
+    color:#fff;
+}
+.wjs-product .product-in.current  .product-right{
+    border-color: #fff;
+}
+.product-in.current  .product-right p:nth-child(1){
+    color:#fff;
+}
+
+.wjs-product .product-in .product-left{
+    height: 150px;
+    overflow: hidden;
+    font-size: 12px;
+    position: relative;
+}
+
+.wjs-product .product-in.current .product-left::before{
+    position: absolute;
+    left:0;
+    top:-9px;
+    content:"\e915";
+    font-family: wjsfont;
+    color:#fff;
+    font-size: 40px;
+}
+
+
+.wjs-product  .product-left h4{
+    text-align: center;
+    line-height: 20px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.wjs-product .product-left p{
+    line-height: 16px;
+    height: 16px;
+    overflow: hidden;
+}
+
+.wjs-product .product-left .progress{
+    height: 10px;
+}
+
+
+.wjs-product .product-in .product-right{
+    width: 108px;
+    height: 150px;
+    float: right;
+    border-left:1px dashed red;
+    text-align: center;
+    position: relative;
+
+}
+
+.wjs-product  .product-right::before,
+.wjs-product  .product-right::after{
+    position: absolute;
+    left:-6px;
+    top:-6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #eee;
+    content:"";
+    box-shadow: 0 -2px 2px #d8d8d8 inset;
+}
+
+.wjs-product  .product-right::after{
+    top:auto;
+    bottom:-6px;
+    box-shadow: 0 2px 2px #d8d8d8 inset;
+}
+
+.wjs-product  .product-right p:nth-child(1){
+    color:red;
+    margin-top:30px;
+}
+
+.wjs-product  .product-right p:nth-child(1) span{
+    font-size: 45px;
+    font-weight: bold;
+}
+
+/* 提示文字 宝 北*/
+.wjs-product  .product-right .tips{
+    position: absolute;
+    top:10px;
+    left:0;
+    width: 100%;
+}
+
+.wjs-product  .tips .bao,
+.wjs-product  .tips .bei{
+    font-size: 14px;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 1px solid green;
+    line-height: 16px;
+    left:30px;
+    color:green;
+    cursor: pointer;
+
+}
+.wjs-product  .tips .bei{
+    right:30px;
+    left:auto;
+    color:red;
+    border: 1px solid red;
+}
+
+
+
+/*新闻模块*/
+.wjs-news{
+    padding:25px 0;
+}
+
+.wjs-news h4{
+    text-align: center;
+    line-height: 40px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+
+.wjs-news h4::after{
+    content:"";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    right:-6px;
+    bottom:-3px;
+
+}
+
+/* 新闻导航*/
+.news-tabs {
+
+}
+.news-tabs > li {
+    float: left;
+    margin-bottom:60px;
+}
+
+.news-tabs > li:last-child{
+    margin-bottom:0;
+}
+.news-tabs > li > a {
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-color: #ccc;
+    border-radius: 50%;
+    color:red;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+}
+.news-tabs > li > a:hover {
+    background-color: red;
+    color:#fff;
+}
+.news-tabs > li.active > a,
+.news-tabs > li.active > a:hover,
+.news-tabs > li.active > a:focus {
+    background-color: red;
+    color:#fff;
+}
+
+/* 竖线*/
+.wjs-news .row>div{
+    position: relative;
+}
+
+.wjs-news .line{
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    border-left:1px dashed #ccc;
+    top:0;
+    left:45px;
+}
+
+/* 新闻内容模块*/
+.wjs-news .tab-content ul li{
+    font-size: 16px;
+    line-height: 45px;
+}
+
+.wjs-news .tab-content  li a:hover{
+    color:red;
+}
+
+/* 当屏幕宽度小于992 时 单独设置样式*/
+
+@media screen and (max-width: 992px){
+    .news-tabs > li{
+        margin-bottom:0;
+        width: 25%;
+    }
+    .news-tabs > li a{
+        margin:0 auto;
+    }
+
+    .wjs-news .tab-content ul li{
+        height: 45px;
+        overflow: hidden;
+    }
+}
+
+/*合作伙伴*/
+.wjs-footer{
+    padding:30px 0;
+    background-color: #eee;
+}
+
+.wjs-footer h3{
+    text-align: center;
+    font-size: 30px;
+}
+.wjs-footer ul{
+    text-align: center;
+}
+.wjs-footer ul li{
+    display: inline-block;
+    font-size: 60px;
+    margin:0 20px;
+}
+
+.wjs-footer ul li a:hover{
+    color:red;
+}
+
+/* 模态框 样式*/
+.modal .panel-primary{
+    margin-bottom:0;
+}

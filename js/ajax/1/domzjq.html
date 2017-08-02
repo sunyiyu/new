@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>domzjq</title>
+    <script src="../jquery.js"></script>
+</head>
+<body>
+    <input type="text" id="aa" value="111111"/>
+    <script>
+        var a = document.getElementById('aa');
+//        alert(a.value);
+        alert($(a).val());
+//        dom对象转jq对象的方法；用$()把dom对象包装起来就OK了；
+    </script>
+</body>
+</html>

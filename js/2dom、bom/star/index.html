@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #star {font-size: 12px; position: relative; width: 600px; height: 30px; margin: 10px auto 50px; }
+        #star ul, #star span { float: left; display: inline; height: 19px; line-height: 19px; }
+        #star ul { margin: 0 10px; }
+        #star li { float: left; width: 24px; cursor: pointer; text-indent: -9999px; background: url(imgs/star.png) no-repeat; }
+        #star strong { color: #F60; padding-left: 10px; }
+        #star li.on { background-position: 0 -28px; }
+        #star p { position: absolute; top: 18px; width: 159px; height: 60px; display: none; background: url(imgs/icon.gif) no-repeat; padding: 14px 10px 0; }
+        #star p em { color: #F60; display: block; font-style: normal; margin-bottom: 1px;}
+    </style>
+</head>
+<body>
+
+<div id="star">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <p></p>
+</div>
+
+<script type="text/javascript">
+
+    function hasClass(element, className) {
+        return (new RegExp('(^|\\s)' + className + '($|\\s)')).test(element.className);
+    }
+
+    function addClass(element, newClassName) {
+        if (!hasClass(element, newClassName)) {
+            element.className += element.className ? (' ' + newClassName) : newClassName;
+        }
+    }
+
+    function removeClass(element, oldClassName) {
+        if (hasClass(element, oldClassName)) {
+            element.className = element.className.replace(new RegExp('(^|\\s)' + oldClassName + '($|\\s)'), ' ').trim();
+        }
+    }
+
+    function delegateEvent(delegateElement, targetTag, eventName, handler) {
+        delegateElement.addEventListener(eventName, function (e) {
+            var target = e.target;
+            if (target.tagName.toLowerCase() === targetTag.toLowerCase()) {
+                return handler(e);
+            }
+        }, false);
+    }
+    var msgsArr = [
+        '非常满意-质量非常好，与卖家描述的完全一致，非常满意',
+        '满意-质量不错，与卖家描述的基本一致，还是挺满意的',
+        '一般-质量一般，没有卖家描述的那么好',
+        '不满意-部分有破损，与卖家描述的不符，不满意',
+        '很不满意-差的太离谱，与卖家描述的严重不符，非常不满'
+    ]
+
+
+    var star = document.getElementById("star");
+    var li = star.getElementsByTagName('li');
+    var tip = star.getElementsByTagName('p')[0];
+
+    for (var i = 0; i < li.length; i++) {
+        li[i].index = i;
+    }
+
+    delegateEvent(star, 'li', 'mouseover', function (e) {
+        var target = e.target;
+        var index = target.index;
+        for (var i = 0; i <= index; i++) {
+            addClass(li[i], 'on');
+        }
+        tip.innerHTML = '<em><b>' + (index + 1) + '</b>分</em>' + msgsArr[index];
+        tip.style.display = "block";
+        tip.style.left = target.offsetLeft - tip.offsetWidth / 2 + target.offsetWidth / 2 + "px";
+    });
+
+    delegateEvent(star, 'li', 'mouseout', function (e) {
+        for (var i = 0; i < li.length; i++) {
+            removeClass(li[i], 'on');
+        }
+        tip.style.display = "none";
+    });
+
+</script>
+
+</body>
+</html>

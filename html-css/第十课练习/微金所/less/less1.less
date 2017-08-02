@@ -1,0 +1,36 @@
+// 变量
+@bgc:#daa520;
+
+/*注释*/
+
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: @bgc;
+}
+//运算
+//可以直接在less中写数学表达式 不用自己去算 避免出现错误
+.box1 {
+  width: 1733/6 px
+}
+
+
+//定义函数
+
+.setBorder(@w,@c) {
+  border:@w solid @c;
+}
+
+.box1 {
+  .box;
+  .setBorder(1px,red);
+}
+
+
+
+//混入
+.nav {
+  .setBorder(1px,green);
+  .box
+}
+

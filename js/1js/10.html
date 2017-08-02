@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组去重</title>
+</head>
+<body>
+<script>
+    function removeRepeat(n) {
+        var re=[];
+        for(var i=1; i< n.length; i++){
+            if(n[i] !== re[re.length-1]){
+                re.push(n[i])
+            }
+        };
+        return re;
+    }
+    var r = removeRepeat([1, 2, 4, 4, 52, 6, 21, 1]);
+    console.log(r);
+</script>
+</body>
+</html>

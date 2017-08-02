@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取数组中最大值</title>
+</head>
+<body>
+<script>
+    function getBiggest(arr) {
+        arr.sort(function(a,b){
+            return b-a;
+        });
+        return arr[0];
+    }
+    var n = getBiggest([-1, -2, -3, 0, 1, 2, 3, 4]);
+    console.log(n);
+</script>
+</body>
+</html>

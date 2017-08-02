@@ -1,0 +1,40 @@
+.w{
+    width: 980px;
+    margin: 0 auto;
+}
+.silde{
+    clear: both;
+    /*padding: 10px 10px;*/
+    padding: 10px 10px;
+}
+.left{
+    float: left;
+    text-align: right;
+    width: 120px;
+}
+.right{
+    float: left;
+    width: 500px;
+}
+.right select{
+    padding: 5px;
+}
+.right textarea{
+    width: 200px;
+    height: 200px;
+    resize: horizontal;
+}
+.sub{
+    clear: both;
+    margin-left: 120px;
+    margin-top: 20px;
+}
+.username{
+    padding: 3px 2px;
+}
+.username[value]{
+    color: #919191;
+}
+
+
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		.weixin, .weixinBottom { position: fixed; _position: absolute; display: block; right: 0; width: 120px; height: 185px; z-index: 100; background-color: #FFF }
+		.weixin { top: 450px; _top: expression(documentElement.scrollTop+450); }
+		.weixinBottom { bottom: 0px; _top: expression(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)); }
+		.weixin img, .weixinBottom img { float: left; display: block; }
+		.weixin span, .weixinBottom span { float: left; color: #999; cursor: pointer; height: 18px; line-height: 18px; padding-left: 4px; }
+	</style>
+</head>
+<body>
+<div class="weixinBottom" id="wx">
+	<span id="wx_close">关闭</span>
+	<img src="http://p3.ifengimg.com/a/2016/0516/5fe93593da14bccsize17_w120_h164.png" width="120" height="164" alt="凤凰新闻客户端" title="凤凰新闻客户端">
+</div>
+<script type="text/javascript">
+	var CookieHandler = (function (document) {
+		var my = {};
+
+		my.createCookie = function (name, value, days) {
+			var expires;
+			var date = new Date();
+
+			if (days instanceof Date) {
+				date = days;
+			} else {
+				days = days || 14;
+				date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+			}
+			expires = "; expires=" + date.toGMTString();
+			document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
+		};
+
+		my.readCookie = function (name) {
+			var nameEncoded = encodeURIComponent(name) + "=";
+			var cookieArray = document.cookie.split(';');
+			for (var i = 0; i < cookieArray.length; i++) {
+				var cookie = cookieArray[i];
+				while (cookie.charAt(0) === ' ') cookie = cookie.substring(1, cookie.length);
+				if (cookie.indexOf(nameEncoded) === 0) return decodeURIComponent(cookie.substring(nameEncoded.length, cookie.length));
+			}
+			return null;
+		};
+
+		my.getCookieArray = function () {
+			return document.cookie.split(';');
+		};
+
+		my.removeCookie = function (name) {
+			my.createCookie(name, "", -1);
+		};
+
+		return my;
+	})(document);
+
+
+//	function cookieGO(name) {
+//		var today = new Date();
+//		var expires = new Date();
+//		expires.setTime(today.getTime() + 1000*60*60*24);
+//	}
+	var wx = document.getElementById("wx");
+	var wx_close = document.getElementById("wx_close");
+
+	var date;
+	var countDate = CookieHandler.readCookie('countDate');
+	if(countDate == null){
+		date = new Date();
+		date.setDate(date.getDate()+1);
+	} else {
+		date = new Date(parseInt(countDate));
+	}
+
+	var count = CookieHandler.readCookie('count') || 0;
+	count++;
+	CookieHandler.createCookie('count', count , date);
+	CookieHandler.createCookie('countDate', +date , date);
+	console.log(count);
+	if(count > 3){
+		wx.style.display = "none";
+	}
+
+	wx_close.addEventListener("click",close)
+	function close(){
+		wx.style.display = "none";
+	}
+
+</script>
+</body>
+</html>

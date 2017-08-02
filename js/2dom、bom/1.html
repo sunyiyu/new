@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apply</title>
+</head>
+<body>
+<div id="title">Div Generation from Multi Dimensional Array Javascript</div>
+<script type="text/javascript">
+    function cats(catName, catFur, catEyes) {
+        document.write('<div>' + catName + '</div>' + '<div>' + catFur + '</div>' + '<div>' + catEyes + '</div>');
+    }
+
+    var catArray = [
+        ["fluffy", "soft", "green"],
+        ["mittens", "coarse", "fire"],
+        ["wiskers", "none", "grey"]
+    ];
+
+    function catGenerator() {
+        for (var i = 0; i < catArray.length; i++) {
+            var blah = catArray[i];
+            cats(blah[0], blah[1], blah[2]);//也可以使用cats.apply(this, blah);
+        }
+    }
+
+    catGenerator();
+</script>
+</body>
+</html>

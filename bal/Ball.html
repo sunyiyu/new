@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		.ball {
+			width: 100px;
+			height: 100px;
+			background: pink;
+			border-radius: 50%;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+
+<button onclick="createBall(false)">创建1个球</button>
+<button onclick="allGo();">GO</button>
+<button onclick="allStop();">STOP</button>
+<button onclick="allAddSpeed();">AddSpeed</button>
+<button onclick="allDecreaseSpeed();">DecreaseSpeed</button>
+
+<script type="text/javascript">
+
+	function Ball() {
+		this.init();
+	}
+
+	Ball.prototype = {
+		target: null,
+		top: 0,
+		left: 0,
+		isDown: 1,
+		isRight: 1,
+		speed: 5,
+		intervalId: 0,
+		isGoing: true,
+		init: function () {
+			this.initDOM();
+			this.go();
+			this.bindEvent();
+		},
+		initDOM: function () {
+			var div = document.createElement('div');
+			div.className = 'ball';
+			div.style.backgroundColor = '#' + Math.random().toString(16).substr(-6);
+			document.body.appendChild(div);
+			this.target = div;
+		},
+		bindEvent: function () {
+			var _this = this;
+			_this.target.addEventListener('click', function () {
+				if(_this.isGoing) {
+					_this.stop();
+				} else {
+					_this.go();
+				}
+			});
+		},
+		go: function () {
+			var _this = this;
+			_this.isGoing = true;
+			_this.intervalId = setInterval(function () {
+				var top = _this.top;
+				top = top + _this.speed * _this.isDown;
+				if (top >= window.innerHeight - 100) {
+					top = window.innerHeight - 100;
+					_this.isDown = -1;
+				}
+				if (top <= 0) {
+					top = 0;
+					_this.isDown = 1;
+				}
+				_this.top = top;
+				_this.target.style.top = top + 'px';
+
+				var left = _this.left;
+				left = left + _this.speed * _this.isRight;
+
+				if (left >= window.innerWidth - 100) {
+					left = window.innerWidth - 100;
+					_this.isRight = -1;
+				}
+				if (left <= 0) {
+					left = 0;
+					_this.isRight = 1;
+				}
+				_this.left = left;
+				_this.target.style.left = left + 'px';
+			}, 40);
+		},
+		stop: function () {
+			var _this = this;
+			clearInterval(_this.intervalId);
+			_this.isGoing = false;
+		},
+		addSpeed: function () {
+			this.speed++;
+		},
+		decreaseSpeed: function () {
+			this.speed--;
+			if(this.speed <= 1) {
+				this.speed = 1;
+			}
+		}
+	}
+
+	var ballArr = [];
+	var count = 0;
+	var timeoutId = 0;
+	var delay = 300;
+
+	function createBall(needDelay) {
+		delay = needDelay ? 1000 * Math.random() : 0;
+		timeoutId = setTimeout(function () {
+			var ball = new Ball();
+			ballArr.push(ball);
+			count++;
+			if (count < 10) {
+				createBall(true);
+			}
+		}, delay);
+	}
+	createBall(false);
+
+	function allGo() {
+		for(var i in ballArr) {
+			ballArr[i].go();
+		}
+	}
+
+	function allStop() {
+		for(var i in ballArr) {
+			ballArr[i].stop();
+		}
+	}
+
+	function allAddSpeed() {
+		for(var i in ballArr) {
+			ballArr[i].addSpeed();
+		}
+	}
+
+	function allDecreaseSpeed() {
+		for(var i in ballArr) {
+			ballArr[i].decreaseSpeed();
+		}
+	}
+
+
+</script>
+</body>
+</html>

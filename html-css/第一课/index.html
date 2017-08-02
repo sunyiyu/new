@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>swf</title>
+        <meta charset="utf-8"/>
+        <style type="text/css">
+            html, body { height:100%; background-color: antiquewhite;}
+            body { margin:0; padding:0; overflow:hidden; }
+        </style>
+    </head>
+    <body>
+        <div id="flashContent">
+            <!--embed是给非IE用的，其中embed的name非常重要，必须与ID一致-->
+            <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="550" height="400" id="swf">
+                <param name="movie" value="swf.swf" />
+                <param name="wmode" value="window" />
+                <param name="allowScriptAccess" value="never" /><!--禁止flash与脚本通信-->
+                <embed src="swf.swf" width="550" height="400"
+                       name="swf" wmode="window" allowscriptaccess="never" type="application/x-shockwave-flash"
+                       pluginspage="http://www.macromedia.com/go/getflashplayer">
+            </object>
+        </div>
+        <div>
+            <textarea id="txt" cols="30" rows="10"></textarea>
+            <button id="btn">JS call AS</button>
+        </div>
+        <script type="text/javascript">
+            var txt = document.getElementById("txt");
+            var btn = document.getElementById("btn");
+            var swf = window["swf"] || document["swf"];
+            btn.onclick = function() {
+                swf["JsCallAs"]("I'm js."); //JsCallAs是flash里addCallback的函数
+            }
+
+            function AsCallJs(s){
+                txt.value += s + "\n";
+            }
+        </script>
+    </body>
+</html>

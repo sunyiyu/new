@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsonp</title>
+</head>
+<body>
+jsonp:
+<button id="btn">请求张三的数据</button>
+<script type="text/javascript">
+    btn.addEventListener('click', function () {
+        var script = document.createElement('script');
+        script.src = 'kk.js?name=zhangsan';
+        document.head.appendChild(script);
+
+        window.xxxxx = function (data) {
+            alert(data.name + '的年龄是' + data.age);
+        }
+    });
+</script>
+
+</body>
+</html>

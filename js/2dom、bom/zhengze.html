@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>regExp</title>
+</head>
+<body>
+<script>
+    var str = 'Hello, my name is Ben. Please visit my website at Ben http://www.forta.com/';
+    var regExp = /Ben/g;
+
+    var result = str.search(regExp)//字符串搜索；
+    var result = str.match(regExp)//字符串搜索 返回类似数组；
+    var result = str.replace(regExp, 'newStr');//字符串搜索；
+    var result = str.split(regExp);//字符串搜索；
+
+    var result = regExp.exec(str);//正则搜索  返回类似数组；
+//    var result = regExp.text(str);//返回true  false 检测有没有；
+    console.log(result);
+
+//    \b\b   单词边界
+//    \s   空白字符===\r\n
+//    <[hH]([1-6])>*?<[aA]\1>
+</script>
+</body>
+</html>

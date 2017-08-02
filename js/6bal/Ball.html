@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		.ball {
+			width: 100px;
+			height: 100px;
+			background: pink;
+			border-radius: 50%;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+
+<button onclick="createBall(false)" id="add">创建1个球</button>
+<button onclick="allGo();">GO</button>
+<button onclick="allStop();">STOP</button>
+<button onclick="allAddSpeed();">AddSpeed</button>
+<button onclick="allDecreaseSpeed();">DecreaseSpeed</button>
+<button onclick="remove();" id="remove">removeone</button>
+
+<script type="text/javascript">
+
+	function Ball(opts) {
+		this.init(opts);
+	}
+
+	Ball.prototype = {
+		target: null,
+		backgroundColor : "#000",
+		top: 0,
+		left: 0,
+		isDown: 1,
+		isRight: 1,
+		speed: 5,
+		intervalId: 0,
+		isGoing: true,
+		init: function (opts) {
+			opts = opts || {};
+			this.backgroundColor = opts.backgroundColor || '#' + Math.random().toString(16).substr(-6);
+			this.speed = opts.speed || 5;
+
+			this.initDOM();
+			this.go();
+			this.bindEvent();
+		},
+		initDOM: function () {
+			var div = document.createElement('div');
+			div.className = 'ball';
+			div.style.backgroundColor = this.backgroundColor;
+			document.body.appendChild(div);
+			this.target = div;
+		},
+		bindEvent: function () {
+			var _this = this;
+			_this.target.addEventListener('click', function () {
+				if(_this.isGoing) {
+					_this.stop();
+				} else {
+					_this.go();
+				}
+			});
+		},
+		go: function () {
+			var _this = this;
+			_this.isGoing = true;
+			_this.intervalId = setInterval(function () {
+				var top = _this.top;
+				top = top + _this.speed * _this.isDown;
+				if (top >= window.innerHeight - 100) {
+					top = window.innerHeight - 100;
+					_this.changebg();
+					_this.isDown = -1;
+				}
+				if (top <= 0) {
+					top = 0;
+					_this.changebg();
+					_this.isDown = 1;
+				}
+				_this.top = top;
+				_this.target.style.top = top + 'px';
+
+				var left = _this.left;
+				left = left + _this.speed * _this.isRight;
+
+				if (left >= window.innerWidth - 100) {
+					left = window.innerWidth - 100;
+					_this.changebg();
+					_this.isRight = -1;
+				}
+				if (left <= 0) {
+					left = 0;
+					_this.changebg();
+					_this.isRight = 1;
+				}
+				_this.left = left;
+				_this.target.style.left = left + 'px';
+			}, 40);
+		},
+		changebg:function () {
+			this.target.style.backgroundColor = '#' + Math.random().toString(16).substr(-6);
+		},
+		stop: function () {
+			var _this = this;
+			clearInterval(_this.intervalId);
+			_this.isGoing = false;
+		},
+		addSpeed: function () {
+			this.speed++;
+		},
+		decreaseSpeed: function () {
+			this.speed--;
+			if(this.speed <= 1) {
+				this.speed = 1;
+			}
+		},
+		destroy: function(){
+			document.body.removeChild(this.target);
+			clearInterval(this.intervalId);
+		}
+	}
+
+	var ballArr = [];
+	var count = 0;
+	var timeoutId = 0;
+	var delay = 300;
+
+	function createBall(needDelay) {
+		delay = needDelay ? 1000 * Math.random() : 0;
+		timeoutId = setTimeout(function () {
+			var ball = new Ball();
+			ballArr.push(ball);
+			count++;
+			if (count < 10) {
+				createBall(true);
+			}
+		}, delay);
+	}
+	createBall(false);
+	function allGo() {
+		for(var i in ballArr) {
+			ballArr[i].go();
+		}
+	}
+	function allStop() {
+		for(var i in ballArr) {
+			ballArr[i].stop();
+		}
+	}
+	function allAddSpeed() {
+		for(var i in ballArr) {
+			ballArr[i].addSpeed();
+		}
+	}
+	function allDecreaseSpeed() {
+		for(var i in ballArr) {
+			ballArr[i].decreaseSpeed();
+		}
+	}
+	function remove() {
+		var ball = ballArr.shift();
+		ball.destroy();
+	}
+
+
+	var Remove = document.getElementById("remove");
+	var Add = document.getElementById("add");
+	Remove.addEventListener("click",function(){
+		if(ballArr.length == 0){
+			Remove.disabled = true;
+		}
+	})
+	Add.addEventListener("click",function(){
+		Remove.disabled = false;
+	})
+
+</script>
+</body>
+</html>

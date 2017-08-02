@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cookie</title>
+</head>
+<body>
+
+<script>
+    var userName = CookieHandler.readCookie('name');
+    var count = CookieHandler.readCookie('count') || 0;
+    if(!userName) {
+        userName = prompt('你是新用户！请输入你的名字');
+        CookieHandler.createCookie('name', userName);
+    }
+    count++;
+    CookieHandler.createCookie('count', count);
+    alert('欢迎你，' + userName + '，这是你第' + count + '次访问');
+</script>
+</body>
+</html>

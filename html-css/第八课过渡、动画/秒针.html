@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .biao {
+            width: 300px;
+            height: 300px;
+            background-color: #FFFF8B;
+            border-radius: 50%;
+            border: 2px solid #E42837;
+            position: relative;
+        }
+
+        .miaozhen {
+            width: 4px;
+            height: 150px;
+            background-color: #000;
+            position: absolute;
+            left:50%;
+            animation:go 60s infinite steps(60);
+            /*steps()停一次*/
+            transform-origin: center bottom;
+        }
+        @keyframes go {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="biao">
+        <div class="miaozhen"></div>
+    </div>
+</body>
+</html>

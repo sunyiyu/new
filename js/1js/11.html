@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>统计数组 arr 中值等于 item 的元素出现的次数</title>
+</head>
+<body>
+<script>
+    function count(arr, item) {
+        var re=0;
+        for(var i in arr){
+            if(item == arr[i]){
+                re++;
+            }
+        }
+        return re;
+    }
+    var n = count([1, 2, 4, 4, 3, 4, 3], 4);
+    console.log(n);
+</script>
+</body>
+</html>

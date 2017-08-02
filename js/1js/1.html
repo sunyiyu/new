@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-100求和</title>
+
+</head>
+<body>
+<script>
+    //1-100求和；
+    'use strict';//严格模式；必须使用var声明变量；
+    var sum=0;
+    for (var i= 1;i<=100; i++){
+        if(i%3==0){
+            continue;
+        }
+        if(i%10==3){
+            continue;//过滤个位数上包含3的数字；
+        }
+        if(parseInt(i/10)==3){
+            continue;//过滤十位数上包含3的数字；
+        }
+        sum+=i;
+    }
+    console.log(sum);
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除字符串中所有的数字</title>
+</head>
+<body>
+<script>
+    function removeNum(str){
+        var sTr1='';
+        for (var i in str){
+            if (isNaN(str[i])){
+                sTr1 += str[i];
+            }
+        }
+        return sTr1;
+    };
+    var r = removeNum('a23b434c45');
+    console.log(r);
+</script>
+</body>
+</html>

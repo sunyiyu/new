@@ -1,0 +1,48 @@
+body {
+    background: rgba(22, 22, 22, 0.3) url(../images/hupu.png) no-repeat top center;
+}
+.w {
+    width: 1000px;
+    margin: 0 auto;
+}
+.login-wrap {
+    background-color: #FFF;
+    width: 540px;
+    height: 360px;
+    position: fixed;
+    left: 50%;
+    margin-left: -270px;
+    top: 50%;
+    margin-top: -205px;
+    padding-top: 50px;
+}
+.logo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+form {
+    width: 320px;
+    margin: 0 auto;
+}
+form input {
+    width: 296px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+form input[type=submit] {
+    border: none;
+    background-color: #E42837;
+    font-size: 18px;
+    color: #FFF;
+    cursor: pointer;
+    width: 320px;
+    margin-top: 50px;
+}
+.login-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(22, 22, 22, 0.8);
+}

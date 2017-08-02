@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>baoll</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #myball{
+            width: 128px;
+            height: 128px;
+            position: absolute;
+            border-radius: 50%;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="myball"></div>
+<script>
+    var myBall = document.getElementById("myball");
+    var ys = 0;
+    var yv = 10;
+    var xs = 0;
+    var xv = 10;
+    var cilentHeight = document.documentElement.clientHeight;
+    var cilentWidth = document.documentElement.clientWidth;
+    var ballHeight = 128;
+    var ballWidth = 128;
+    var heightDifference = cilentHeight-ballHeight;
+    var widthDifference = cilentWidth-ballWidth;
+    setInterval(function(){
+        //y轴数据；
+        ys += yv;
+        if(ys >= heightDifference){
+            ys = heightDifference;
+            yv = -yv;
+        }
+        if(ys <= 0){
+            yv = -yv;
+        }
+        myBall.style.top = ys + "px";
+
+        //x轴数据；
+        xs += xv;
+        if(xs >= widthDifference){
+            xs = widthDifference;
+            xv = -xv;
+        }
+        if(xs <= 0){
+            xv = -xv;
+        }
+        myBall.style.left = xs + "px";
+    },10)
+</script>
+</body>
+</html>

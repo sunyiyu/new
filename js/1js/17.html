@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>将字符串中 _ 后面的小写字母变大写，并且删除</title>
+</head>
+<body>
+<script>
+    //案例7（73）
+    //    将字符串中 _ 后面的小写字母变大写，并且删除 _
+    //    编写函数 toCamelStyle,满足
+    //    toCamelStyle('abc_bcd');  // 输出 'abcBcd'
+    //    toCamelStyle('a_3_c_d_ef');  // 输出 'a3CDEf'
+    //    toCamelStyle('_a_b_c_d_ef');  // 输出 '_aBCDEf'
+
+    //    方法1：
+        function toCamelStyle(str) {
+            var arr = str.split('_');
+            if(arr[0] == '') {
+                arr[0] = '_';
+            }
+            for(var i = 0; i < arr.length; i++) {
+                var str = arr[i];
+                if(!(arr[0] == '_' && i == 1) && i != 0) {
+                    arr[i] = str[0].toUpperCase() + str.slice(1);
+                }
+            }
+            return arr.join('');
+        }
+//        console.log(toCamelStyle('abc_bcd'));
+//        console.log(toCamelStyle('a_3_c_d_ef'));
+        console.log(toCamelStyle('_a_b_c_d_ef'));
+//        console.log(toCamelStyle('_abc_d_ef'));
+
+
+    //    方法2
+    //    function toCamelStyle(str) {
+    //        var arr=str.split('_');
+    //        if(arr[0]==''){
+    //            arr[0]='_';
+    //        }
+    //        for(var i=0;i<arr.length;i++){
+    //            var newstr = arr[i];
+    //            if(newstr.charAt(0)=='_'){
+    //                i++;
+    //                continue;
+    //            } else if (i == 0) {
+    //                continue;
+    //            }
+    //            arr[i] = newstr[0].toUpperCase() + newstr.substring(1);
+    //        }
+    //        return  arr.join('');
+    //    }
+    //
+    //    console.log(toCamelStyle('abc_bcd'));
+    //    console.log(toCamelStyle('a_3_c_d_ef'));
+    //    console.log(toCamelStyle('_a_b_c_d_ef'));
+
+
+    //    方法3：
+//    function toCamelStyle(str) {
+//        var index = str.indexOf('_');
+//        var result = '';
+//        var indexBefore = 0; //一开始的索引是0,index的上一个索引值
+//
+//        while (index != -1) {
+//            if (!index) {
+//                result += str.substring(0, 2); //'_'在第一个位置则保留,并且其后面的字母不大写
+//            } else {
+//                result += str.substring(indexBefore, index) + str.charAt(index + 1).toUpperCase();
+//            }
+//            indexBefore = index + 2;
+//            index = str.indexOf('_', indexBefore);
+//        }
+//        result += str.substring(indexBefore);
+//        return result;
+//    }
+//    var result2 = toCamelStyle('a_3_c_d_ef');
+//    console.log(result2);
+
+    //    方法4：
+    //    function toCamelStyle(str) {
+    //        var arr=str.split('');
+    //        var arr1=[];
+    //        if(arr[0]=='_'){
+    //            arr1.push(arr[0]);
+    //        }
+    //        for(var i=0;i<arr.length;i++){
+    //            if(arr[i]=='_'&&(i!=0)){
+    //                arr[i+1]=arr[i+1].toUpperCase()
+    //            }
+    //            if(arr[i]!='_'){
+    //                arr1.push(arr[i]);
+    //            }
+    //        }
+    //
+    //        return arr1.join('');
+    //    }
+    //    var result=toCamelStyle('_a_b_c_d_ef');
+    //    var result2=toCamelStyle('a_3_c_d_ef')
+    //    console.log(result);
+    //    console.log(result2);
+
+</script>
+</body>
+</html>

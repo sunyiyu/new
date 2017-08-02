@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		body {
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+<div id="father" style="width: 500px; height: 500px; background-color: #8058A5; position: relative;">
+	<img id="img" src="img.jpg" style="position: absolute;">
+</div>
+
+<div style="height: 1000px;"></div>
+
+<script type="text/javascript">
+	var img = document.getElementById('img');
+	var father = document.getElementById('father');
+	var fatherW = parseInt(father.style.width);
+	var fatherH = parseInt(father.style.height);
+
+
+	document.addEventListener('scroll', function (e) {
+		var resultX = e.clientX;
+		var resultY = e.clientY;
+
+		if (resultY < 0) {
+			resultY = 0;
+		}
+
+		if (resultX < 0) {
+			resultX = 0;
+		}
+
+		if (resultX > fatherW - 210) {
+			resultX = fatherW - 210;
+		}
+		if (resultY > fatherH - 261) {
+			resultY = fatherH - 261;
+		}
+
+		img.style.left = resultX + "px";
+		img.style.top = resultY + document.body.scrollTop + "px";
+	});
+
+	father.addEventListener('mousemove', function (e) {
+		var resultX = e.clientX + document.body.scrollLeft - 105;
+		var resultY = e.clientY + document.body.scrollTop - 130;
+		console.log(father.offsetLeft);
+
+		if (resultY < 0) {
+			resultY = 0;
+		}
+
+		if (resultX < 0) {
+			resultX = 0;
+		}
+
+		if (resultX > fatherW - 210) {
+			resultX = fatherW - 210;
+		}
+		if (resultY > fatherH - 261) {
+			resultY = fatherH - 261;
+		}
+
+		img.style.left = resultX + "px";
+		img.style.top = resultY + "px";
+	});
+</script>
+</body>
+</html>

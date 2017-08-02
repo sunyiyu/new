@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组合并</title>
+</head>
+<body>
+<script>
+    function concat(arr1, arr2) {
+        var arr = new Array();
+        for(var i in arr1){
+            arr.push(arr1[i]);
+        }
+        for(var i in arr2){
+            arr.push(arr2[i]);
+        }
+        return arr;
+    }
+    var ar1 = [1, 2, 3, 4];
+    var ar2 = ['a', 'b', 'c', 1];
+    var n = concat(ar1, ar2);
+    console.log(n);
+    console.log(ar1);
+    console.log(ar2);
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios</title>
+</head>
+<body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('https://www.easy-mock.com/mock/59576e9f9adc231f356f19ca/example/mock')
+            .then(function (response) {
+                var projects = response.data.data.projects;
+                console.log(projects);
+                for(var i in projects) {
+                    console.log(projects[i].name);
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件委托</title>
+</head>
+<body>
+    <ul id="ul">
+        <li id="li"><a href="#none">Coffee</a></li>
+        <li>Tea</li>
+    </ul>
+
+    <input type="text" id="txt"/>
+
+    <script type="text/javascript">
+        var ul = document.getElementById('ul');
+        var li = document.getElementById('li');
+
+        ul.addEventListener('click', function (e) {
+            console.log(e);
+            console.log(e.target);  //触犯事件的当前对象；
+            console.log(e.currentTarget); //侦听指向；
+        });
+
+        var txt = document.getElementById('txt');
+        txt.addEventListener('keydown', function (e) {
+            console.log(e);
+        });
+    </script>
+</body>
+</html>

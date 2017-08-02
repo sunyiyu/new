@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for循环中的setTimeout</title>
+</head>
+<body>
+<!--面试中经常遇到-->
+<script>
+    for(var i = 0; i < 5; i++) {
+        (function (j) {
+            setTimeout(function () {
+                console.log(j);
+            }, 1000);
+        })(i);
+    }
+</script>
+</body>
+</html>

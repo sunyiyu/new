@@ -1,0 +1,88 @@
+@jdc:#d8505c;
+
+/*分类页面*/
+
+html,body{
+  height: 100%;
+  width: 100%;
+}
+/*头部*/
+.category-header{
+  form{
+    width: 100%;
+    height: 44px;
+    padding-top:7px;
+    input{
+      width: 100%;
+      height: 30px;
+      border: 1px solid #ccc;
+      -webkit-border-radius: 5px;
+              border-radius: 5px;
+    }
+  }
+}
+
+.category-content{
+  padding-top:44px;
+  width: 100%;
+  height: 100%;
+  .content-left{
+    width: 90px;
+    height: 100%;
+    overflow: hidden;
+    ul{
+      li{
+        a{
+          display: block;
+          width: 90px;
+          height: 50px;
+          text-align: center;
+          line-height: 50px;
+          border-right:1px solid #ccc;
+          border-bottom:1px solid #ccc;
+        }
+      }
+      .current{
+         a{
+           color:@jdc;
+           border-right:none;
+         }
+      }
+    }
+
+  }
+  .content-right{
+    height: 100%;
+    overflow: hidden;
+    padding:10px;
+    .banner{
+      img{
+        width: 100%;
+      }
+    }
+    .hot{
+      padding-top:10px;
+      .hot-title{
+
+      }
+      .hot-main{
+        ul{
+          li{
+            float: left;
+            width: 33.33%;
+            text-align: center;
+            a{
+              display: block;
+              img{
+                width: 50%;
+              }
+              p{
+
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+body, p, img, dl, dt, dd, ul, ol, h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; }
+body { position: relative; font: 12px/1.2em "Microsoft YaHei", Arial; color: #000; text-align: left; background: #FFF; }
+ul, ol { list-style: none; }
+img { border: 0 none; }
+input, select { vertical-align: middle; }
+table { border-collapse: collapse; }
+s, em, i { font-style: normal; text-decoration: none; }
+.cf { *zoom: 1; }
+.cf:after { clear: both; content: "."; display: block; height: 0; overflow: hidden; visibility: hidden; zoom: 1; }
+
+.search {
+    margin-top: 40px;
+    margin-left: 40px;
+    height: 36px;
+    position: relative;
+}
+
+.search .search-wrap:hover .search-layer {
+    display: block;
+}
+
+.search input {
+    float: left;
+    width: 370px;
+    height: 24px;
+    line-height: 24px;
+    color: #666;
+    padding: 4px;
+    margin-bottom: 4px;
+    border: 2px solid #B61D1D;
+    border-right-width: 0;
+    outline: 0;
+    font-size: 14px;
+    font-family: "microsoft yahei";
+}
+
+.search .button {
+    float: left;
+    width: 82px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    background: #B61D1D;
+    border: none;
+    color: #fff;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.search .search-layer {
+    position: absolute;
+    top: 36px;
+    left: 0;
+    width: 460px;
+    border: 1px solid #ccc;
+    background: #fff;
+    display: none;
+}
+
+.search .search-layer li {
+    overflow: hidden;
+    padding: 1px 6px;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.search .search-layer li:hover {
+    background: #ffdfc6;
+}
+
+
+.search .search-layer a {
+    float: left;
+    width: 400px;
+    text-decoration: none;
+}
+
+
+.search .search-layer .search-count {
+    float: right;
+    color: #aaa;
+    text-align: right;
+}
+
+.search .search-layer .close {
+    border-top: 1px solid #efefef;
+    text-align: right;
+    cursor: default;
+}
+
+.search .search-layer .close a {
+    float: right;
+    width: auto;
+    color: #666;
+}
+
+
+.search .search-layer .close:hover {
+    background: #FFF;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+
+/*.box{*/
+    /*width:1200px;*/
+    /*height: 300px;*/
+    /*margin: 0 auto;*/
+    /*background: url(//static.360buyimg.com/item/main/1.0.34/widget/baby/i/bg.png) no-repeat 18px bottom pink;*/
+    /*background-origin: ;*/
+    /*background-size: ;*/
+    /*background-attachment: ;*/
+/*}*/
+.box{
+    padding:10px;
+    font-size: 20px "Î¢ÈíÑÅºÚ";
+    font-weight: bolder;
+}
+i.b1,i.b2{
+    display: inline-block;
+    margin-left: 2px;
+    width:20px;
+    height:20px;
+    background: url("i/icon.png") no-repeat;
+    background-position: 3px -46px;
+    vertical-align: -4px;
+}
+i.b2 {
+    background-position: -26px 4px;
+}
+.search {
+    display: inline-block;
+    width: 66px;
+    height: 35px;
+    background: #ff8400 url(http://i0.sinaimg.cn/home/main/index2013/0719/bg2.png) 0 0 no-repeat;
+    text-indent: -99999px;
+}
+
+.logo {
+    display: inline-block;
+    width: 111px;
+    height: 47px;
+    background: url(http://i1.sinaimg.cn/dy/deco/2013/0329/logo/LOGO_1x.png);
+    text-indent: -99999px;
+}
+
+.p{
+    width: 200px;
+    /*½ûÖ¹»»ÐÐ*/
+    white-space: nowrap;
+    /*Òç³öÒþ²Ø*/
+    overflow: hidden;
+    /*µ¥ÐÐÒç³öÊ¡ÁÐºÅ*/
+    text-overflow: ellipsis;
+}
+
+
+
+

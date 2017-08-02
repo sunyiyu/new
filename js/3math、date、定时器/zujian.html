@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时组件</title>
+    <style>
+        .item {
+            float: left;
+        }
+
+        img {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="item" data-end="1499443199000" data-now="1498879364941">
+    <img src="http://img10.360buyimg.com/trial/jfs/t6685/40/1478419775/38370/d612cd42/59523c23N167066a6.jpg" alt="">
+    <div class="countdown"></div>
+</div>
+<div class="item" data-end="1499442199000" data-now="1498879364941">
+    <img src="http://img30.360buyimg.com/pop/s400x400_jfs/t5866/194/535892880/182354/f80bca33/591fec71N6637d1d7.jpg" alt="">
+    <div class="countdown"></div>
+</div>
+<div class="item" data-end="1498879369941" data-now="1498879364941">
+    <img src="http://img10.360buyimg.com/trial/jfs/t6031/280/2754026103/39886/bf3ced11/594634cbNebf97104.jpg" alt="">
+    <div class="countdown"></div>
+</div>
+
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    var CountDown = function (opts) {
+        this.init(opts);
+    }
+
+    CountDown.prototype = {
+        init: function (opts) {
+            var _this = this;
+            _this.end = parseInt(opts.end);
+            _this.now = parseInt(opts.now);
+            _this.onCountDown = opts.onCountDown;
+            _this.onEnd = opts.onEnd;
+
+            _this.endDate = new Date(_this.end);//结束时间
+            _this.nowDate = new Date(_this.now);//当前时间
+
+            _this.cha = _this.endDate - _this.nowDate;
+
+            _this.start();
+        },
+        start: function () {
+            var _this = this;
+            var intervalId = setInterval(function () {
+                _this.cha -= 1000;
+                var intervalSec = _this.cha / 1000; //转换成秒数
+
+                if(intervalSec <= 0) {
+                    _this.onEnd();
+                    clearInterval(intervalId);
+                    return;
+                }
+
+                var day = parseInt(intervalSec / 3600 / 24); //天数
+                var hour = parseInt((intervalSec - day * 24 * 3600) / 3600); //小时
+                var min = parseInt((intervalSec - day * 24 * 3600 - hour * 3600) / 60); //分钟
+                var sec = parseInt((intervalSec - day * 24 * 3600 - hour * 3600 - min * 60)); //秒
+                _this.onCountDown(day, hour, min, sec);
+            }, 1000);
+        }
+    }
+
+    $('.item').each(function (i, item) {
+        var $item = $(item);
+        new CountDown({
+            end: $item.attr('data-end'),
+            now: $item.attr('data-now'),
+            onCountDown: function (day, hour, min, sec) {
+                var str = day + '天' + hour + '小时' + min + '分' + sec + '秒';
+                $item.find('.countdown').html(str);
+            },
+            onEnd: function () {
+                $item.find('.countdown').html('已结束');
+            }
+        });
+    });
+
+    function inDate(date1,date2){
+        var now = new Date();
+        if(now >= date1 && now <= date2){
+            alert("在活动期内");
+        }else{
+            alert("已结束");
+        }
+    }
+
+    var result = inDate(new Date(2017, 6, 1), new Date(2017, 6, 6));
+//    if(result){//true false;
+//        alert("在活动期内");
+//    }
+</script>
+</body>
+</html>

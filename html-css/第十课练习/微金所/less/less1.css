@@ -1,0 +1,21 @@
+/*注释*/
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: #daa520;
+}
+.box1 {
+  width: 288.83333333 px;
+}
+.box1 {
+  width: 200px;
+  height: 200px;
+  background-color: #daa520;
+  border: 1px solid red;
+}
+.nav {
+  border: 1px solid green;
+  width: 200px;
+  height: 200px;
+  background-color: #daa520;
+}

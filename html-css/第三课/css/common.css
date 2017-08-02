@@ -1,0 +1,124 @@
+body, p, img, dl, dt, dd, ul, ol, h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; }
+body { position: relative; font: 12px/1.5 "Microsoft YaHei", Arial; min-width: 960px; }
+ul, ol { list-style: none; }
+img { border: 0 none; }
+input, select { vertical-align: middle; }
+table { border-collapse: collapse; }
+s, em, i { font-style: normal; text-decoration: none; }
+.cf { *zoom: 1; }
+.cf:after { clear: both; content: "."; display: block; height: 0; overflow: hidden; visibility: hidden; zoom: 1; }
+
+
+body{
+    background: url("../images/bg.png");
+}
+
+.w{
+    width: 960px;
+    margin:0 auto;
+}
+.logo {
+    margin-top: 24px;
+}
+.top-border,
+.bottom-border{
+    height: 8px;
+    background: #822619;
+}
+.nav {
+    height: 46px;
+    background: #1b6568 url("../images/diamond.png") repeat-x center;
+    margin: 3px 0;
+}
+.nav .w{
+    position: relative;
+}
+.nav ul li{
+    float:left;
+    margin-right:46px;
+}
+.nav ul li a{
+    color: #9ec4c7;
+    text-decoration: none;
+    font-size: 21px;
+    line-height: 46px;
+}
+.nav ul li a:hover{
+    color:#fff;
+}
+
+.nav .waiter {
+    width: 335px;
+    height: 205px;
+    background: url("../images/waiter.png") no-repeat ;
+    position: absolute;
+    right: 0;
+    top: -148px;
+}
+
+
+
+
+.footer{
+    margin-top: 30px;
+    color: #ffffff;
+
+}
+.footer .footer-content{
+    margin-top: 3px;
+    background: #1b6568;
+    padding: 20px 0;
+}
+.footer .left,.footer .middle,.footer .right{
+    width: 310px;
+    float: left;
+}
+.footer .left .first{
+    font-size: 18px;
+}
+.footer .left .last{
+    font-size: 24px;
+}
+.footer ul li{
+    float: left;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+.footer .middle{
+    text-align: center;
+    word-spacing: 7px;
+    padding-top: 8px;
+}
+.footer .middle p{
+    line-height: 24px;
+}
+.footer .middle .first{
+    padding-top: 20px;
+}
+.footer .right{
+    text-align: center;
+    float: right;
+}
+.footer .right .txt{
+    font-size: 16px;
+    line-height: 30px;
+}
+.footer .right .p_bg{
+    text-align: center;
+    color: #4c1407;
+    background: url("../images/email.png") no-repeat;
+    background-position: -2px 10px;
+    width: 228px;
+    height: 30px;
+    line-height: 30px;
+    padding-top: 10px;
+    border: none;
+}
+.footer .right img{
+    padding-top: 10px;
+}
+
+
+
+
+

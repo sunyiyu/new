@@ -1,0 +1,151 @@
+.tree{
+    height: 720px;
+    background-color: #f2f7d7;
+}
+.w{
+    width: 1404px;
+    height: 720px;
+    background:url("i/js.png");
+    position: relative;
+}
+.mytree{
+    width: 456px;
+    height: 349px;
+    /*background-color:rgba(220,33,7,0.5);*/
+    position: absolute;
+    top: 229px;
+    left: 225px;
+}
+.mytree i{
+    background: url("i/apple.png") no-repeat;
+    width: 39px;
+    height: 49px;
+    position: absolute;
+}
+.mytree .qiandao{
+    background:url("i/qiandao.png") no-repeat;
+    width: 118px;
+    height: 105px;
+    top: 124px;
+    left: 175px;
+}
+.mytree .app1{
+    top: 137px;
+    left: 30px;
+}
+.mytree .app2{
+    top: 64px;
+    left: 109px;
+}
+.mytree .app3{
+    top: 145px;
+    left: 114px;
+}
+.mytree .app4{
+    top: 213px;
+    left: 65px;
+}
+.mytree .app5{
+    top: 20px;
+    left: 186px;
+}
+.mytree .app6{
+    top: 55px;
+    left: 276px;
+}
+.mytree .app7{
+    top: 239px;
+    left: 190px;
+}
+.mytree .app8{
+    top: 92px;
+    right: 50px;
+}
+.mytree .app9{
+    top: 155px;
+    right: 103px;
+}
+.mytree .app10{
+    top: 184px;
+    right: 31px;
+}
+.mytree .app11{
+    top: 246px;
+    right: 98px;
+}
+ul.book{
+    width: 460px;
+    height: 300px;
+    /*background: red;*/
+    position: absolute;
+    top: 290px;
+    right: 251px;
+    font-size: 12px;
+}
+ul li{
+    float: left;
+    width: 110px;
+    height: 128px;
+    margin-right: 5px;
+    text-align: center;
+}
+ul.book li i{
+    display: inline-block;
+    width: 75px;
+    height: 99px;
+}
+ul.book li .book1{
+    background: url("i/1.png") no-repeat;
+}
+ul.book li .book2{
+    background: url("i/2.png") no-repeat;
+}
+ul.book li .book3{
+    background: url("i/3.png") no-repeat;
+}
+ul.book li .book4{
+    background: url("i/4.png") no-repeat;
+}
+ul.book li .book5{
+    background: url("i/5.png") no-repeat;
+}
+ul.book li .book6{
+    background: url("i/6.png") no-repeat;
+}
+ul.book li .book7{
+    background: url("i/7.png") no-repeat;
+}
+ul.book li .book8{
+    background: url("i/8.png") no-repeat;
+}
+ul.book li p{
+    line-height: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

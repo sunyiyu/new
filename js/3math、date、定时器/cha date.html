@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+</head>
+<body>
+<script>
+    var endDate = new Date(1499443199000);//结束时间
+    var nowDate = new Date(1498879364941);//当前时间
+    var cha = endDate - nowDate;
+
+    setInterval(function () {
+        cha -= 1000;
+        var intervalSec = cha / 1000; //转换成秒数
+        var day = parseInt(intervalSec / 3600 / 24); //天数
+        var hour = parseInt((intervalSec - day * 24 * 3600) / 3600); //小时
+        var min = parseInt((intervalSec - day * 24 * 3600 - hour * 3600) / 60); //分钟
+        var sec = parseInt((intervalSec - day * 24 * 3600 - hour * 3600 - min * 60)); //秒
+
+        console.log(day, hour, min, sec);
+
+    }, 1000);
+</script>
+</body>
+</html>

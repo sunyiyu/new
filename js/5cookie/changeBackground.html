@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cookie改变背景</title>
+    <style type="text/css">
+        body {
+            background: #F0F0F0;
+        }
+        body.dark {
+            background: #202020;
+        }
+        body.red {
+            background: #CD301E;
+        }
+        body.blue {
+            background: #2D97FF;;
+        }
+        div {
+            width: 300px;
+            height: 75px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            line-height: 75px
+        }
+        button {
+            background: #4D4D4D;
+            border: none;
+            outline: none;
+            padding: 10px;
+            color: #FFF;
+            cursor: pointer;
+            border-radius: 2px
+        }
+    </style>
+</head>
+<body>
+<div>
+    <button>Change Background</button>
+</div>
+<script>
+    var CookieHandler = (function (document) {
+        var my = {};
+
+        my.createCookie = function (name, value, days) {
+            var expires;
+
+            if (!days) {
+                days = 14;
+            }
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toGMTString();
+            document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
+        };
+
+        my.readCookie = function (name) {
+            var nameEncoded = encodeURIComponent(name) + "=";
+            var cookieArray = document.cookie.split(';');
+            for (var i = 0; i < cookieArray.length; i++) {
+                var cookie = cookieArray[i];
+                while (cookie.charAt(0) === ' ') cookie = cookie.substring(1, cookie.length);
+                if (cookie.indexOf(nameEncoded) === 0) return decodeURIComponent(cookie.substring(nameEncoded.length, cookie.length));
+            }
+            return null;
+        };
+
+        my.getCookieArray = function () {
+            return document.cookie.split(';');
+        };
+
+        my.removeCookie = function (name) {
+            my.createCookie(name, "", -1);
+        };
+
+        return my;
+    })(document);
+
+
+    var arr = ["","dark","red","blue"];
+    var index = 0;
+    var btn = document.getElementsByTagName("button")[0];
+    var nnn = CookieHandler.readCookie("color");
+    console.log(nnn);
+    if (nnn != null){
+        index = nnn;
+        document.body.className = arr[nnn];
+    }
+
+    btn.addEventListener("click",eventOne);
+    function eventOne() {
+        document.body.className = arr[index++];
+        if(index >= arr.length){
+            index = 0;
+        }
+        document.body.className = arr[index];
+        CookieHandler.createCookie('color', index);
+    }
+
+
+</script>
+</body>
+</html>

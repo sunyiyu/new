@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取数组中数字大于0的元素集合</title>
+</head>
+<body>
+<script>
+    function getBig0(arr) {
+        var arr1=new Array();
+        for(var i in arr){
+            if(arr[i]>0){
+                arr1.push(arr[i]);
+            }
+        };
+        return arr1;
+    }
+    var r = getBig0([-1, -2, -3, 0, 1, 2, 3, 4]);
+    console.log(r);
+</script>
+</body>
+</html>

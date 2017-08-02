@@ -1,0 +1,44 @@
+.box{
+    height: 300px;
+    border: 1px solid gray;
+}
+.box ul{
+    padding: 20px;
+}
+.box ul li{
+    float: left;
+    width: 190px;
+    height: 190px;
+    margin-right: 10px;
+    position: relative;
+}
+.box ul li i{
+    background:url("i/changshang.png");
+    width: 85px;
+    height: 82px;
+    position: absolute;
+    top: -7px;
+}
+.box ul .fanquan i{
+    background:url("i/fanquan.png");
+}
+.box ul .fuyou i{
+    background:url("i/fuyou.png");
+}
+.tit{
+    text-align: center;
+    word-spacing: 10px;
+    font-size: 20px;
+    line-height: 50px;
+    background-color: rgba(255,155,37,0.7);
+    color: #ffffff;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+
+
+
+
+

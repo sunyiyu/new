@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算给定数组 arr 中所有元素的总和</title>
+</head>
+<body>
+<script>
+    function sum(arr) {
+        var num=0;
+        for (var i in arr){
+            num+=arr[i];
+        }
+        return num;
+    };
+    var r = sum([ 1, 2, 3, 4 ,5]);
+    console.log(r);
+</script>
+</body>
+</html>

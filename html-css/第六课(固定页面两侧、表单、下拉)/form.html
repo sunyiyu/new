@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <form action="http://192.168.2.102:8080/getform" method="get">
+        <!--name是提交到后台显示的名称 value默认值-->
+        <input type="text" name="username" maxlength="8" readonly/>
+        <!--maxlength限制长度-->
+        <!--readonly只读-->
+
+        <input type="text" name="age" value="20" disabled="disabled"/>
+        <!--disabled禁用input-->
+
+        <div>
+            <label for="man">男：</label><input type="radio" name="sex" value="1" id="man"/>
+            <label for="woman">女:</label> <input type="radio" name="sex" value="2" id="woman" checked="checked"/>
+            <!--checked 默认选中-->
+            <!--label 关联input-id-->
+        </div>
+
+        <div>
+            <input type="checkbox" name="city" id="beij" value="101"/><label for="beij">北京</label>
+            <input type="checkbox" name="city" id="shangh" value="102"/><label for="shangh">上海</label>
+            <input type="checkbox" name="city" id="guangz" value="103"/><label for="guangz">广州</label>
+            <input type="checkbox" name="city" id="xiangg" value="104"/><label for="xiangg">香港</label>
+            <!--label 关联input-id-->
+        </div>
+
+        <select name="address" id="" size="2" multiple>
+            <!--size默认选中几个; multiple多选-->
+            <option name="beijing" value="北京" selected>北京</option>
+            <option name="shanghai" value="上海">上海</option>
+            <option name="shenzhen" value="深圳">深圳</option>
+            <option name="hangkong" value="香港">香港</option>
+        </select>
+
+        <textarea name="" cols="30" rows="10" style="resize: vertical"></textarea>
+        <!--style="resize:horizontal只可水平拉伸; resize: vertical只可垂直拉伸"  注意：不要换行textarea,会保留空格-->
+
+        <input type="hidden" name="user_id" value="123"/>
+        <!--隐藏域  服务器上显示-->
+
+        <input type="file" name="photo" accept="image/jpeg"/>
+        <!--文件选择框，即浏览-->
+        <!--accept="image/jpeg" 筛选格式-->
+
+        <input type="submit"/>
+        <!--reset 提交按钮-->
+
+        <input type="reset"/>
+        <!--reset 重置按钮-->
+
+        <input type="button" value="全选"/>
+    </form>
+</body>
+</html>

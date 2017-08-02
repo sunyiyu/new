@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slider</title>
+	<style type="text/css">
+		body, p, img, dl, dt, dd, ul, ol, h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; }
+		body { position: relative; font: 12px/1.5 Simsun, Arial; color: #666; text-align: left; background: #000; }
+		ul, ol { list-style: none; }
+		img { border: 0 none; }
+		input, select { vertical-align: middle; }
+		table { border-collapse: collapse; }
+		s, em, i { font-style: normal; text-decoration: none; }
+		a { outline: none; text-decoration: none; }
+		a:hover { text-decoration: underline; }
+		.clear { *zoom: 1; }
+		.clear:after { clear: both; content: "."; display: block; height: 0; overflow: hidden; visibility: hidden; zoom: 1; }
+		.slideBox {
+			position: relative;
+			width: 600px;
+			height: 400px;
+			overflow: hidden;
+		}
+		.slideBox ul.items {
+			position: absolute;
+			width: 8000px;
+			height: 400px;
+		}
+		.slideBox ul.items li {
+			float: left;
+			width: 600px;
+			height: 400px;
+		}
+		.arrows .arrow-left {
+			background: url(images/sprite-arrow-prev.png) no-repeat;
+			width: 22px;
+			height: 32px;
+			position: absolute;
+			left: 10px;
+			top: 180px;
+		}
+		.arrows .arrow-right {
+			background: url(images/sprite-arrow-next.png) no-repeat;
+			width: 22px;
+			height: 32px;
+			position: absolute;
+			right: 10px;
+			top: 180px;
+		}
+		.dots {
+			width: 100%;
+			position: absolute;
+			bottom: 20px;
+			text-align: center;
+		}
+		.dots li {
+			display: inline-block;
+			width: 15px;
+			height: 15px;
+			background-color: #C0C0C0;
+			border-radius: 50%;
+			cursor: pointer;
+			margin: 0 3px;
+		}
+		.dots li.curr {
+			background-color: #FFEC23;
+		}
+	</style>
+</head>
+<body>
+
+<div id="slide" class="slideBox">
+	<ul class="items J-items">
+		<li>
+			<a href="#" target="_blank">
+				<img src="http://demo.sc.chinaz.com/Files/DownLoad/webjs1/201304/jiaoben828/img/1.jpg">
+			</a>
+		</li>
+		<li>
+			<a href="#" target="_blank">
+				<img src="http://demo.sc.chinaz.com/Files/DownLoad/webjs1/201304/jiaoben828/img/2.jpg">
+			</a>
+		</li>
+		<li>
+			<a href="#" target="_blank">
+				<img src="http://demo.sc.chinaz.com/Files/DownLoad/webjs1/201304/jiaoben828/img/3.jpg">
+			</a>
+		</li>
+		<li>
+			<a href="#" target="_blank">
+				<img src="http://demo.sc.chinaz.com/Files/DownLoad/webjs1/201304/jiaoben828/img/4.jpg">
+			</a>
+		</li>
+		<li>
+			<a href="#" target="_blank">
+				<img src="http://demo.sc.chinaz.com/Files/DownLoad/webjs1/201304/jiaoben828/img/5.jpg">
+			</a>
+		</li>
+	</ul>
+	<ul class="dots J-dots"></ul>
+	<div class="arrows">
+		<a class="arrow-left J-arrow-left" href="javascript:;" target="_self"></a>
+		<a class="arrow-right J-arrow-right" href="javascript:;" target="_self"></a>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	$(function () {
+
+		var Slider = function () {
+			this.init();
+		}
+
+		Slider.prototype = {
+			init: function () {
+				var _this = this;
+				_this.$slider = $('#slide');
+				_this.$ul = _this.$slider.find('.J-items');
+				_this.$li = _this.$ul.find('li');
+				_this.$dots = _this.$slider.find('.J-dots');
+				_this.$leftBtn = _this.$slider.find('.J-arrow-left');
+				_this.$rightBtn = _this.$slider.find('.J-arrow-right');
+
+				_this.index = 0;
+
+				this.initDOM();
+				this.bindEvent();
+				this.autoChange();
+			},
+			initDOM: function () {
+				var _this = this;
+				var html = '';
+				for (var i = 0; i < _this.$li.length; i++) {
+					html += '<li></li>';
+				}
+				_this.$dots.html(html);
+				_this.$dotsli = _this.$dots.find('li');
+				_this.$dotsli.eq(0).addClass('curr');
+
+				var $newli = _this.$li.first().clone();
+				_this.$ul.append($newli);
+				_this.$li = _this.$ul.find('li');
+			},
+			bindEvent: function () {
+				var _this = this;
+				_this.$leftBtn.click(function () {
+					_this.change('left');
+				});
+				_this.$rightBtn.click(function () {
+					_this.change('right');
+				});
+				_this.$dotsli.click(function () {
+					var index = $(this).index();
+					_this.index = index;
+					_this.jump();
+				});
+			},
+			autoChange: function () {
+				var _this = this;
+				_this.timeoutId = setTimeout(function () {
+					_this.change('right');
+				}, 2000);
+			},
+			change: function (direction) {
+				var _this = this;
+
+				if (direction == 'left') {
+					if(_this.index == 0) {
+						_this.index = 5;
+						_this.$ul.css('marginLeft', -600 * _this.index);
+					}
+					_this.index--;
+				} else {
+					_this.index++;
+				}
+
+				if (_this.index < 0) {
+					_this.index = _this.$li.length - 1;
+				}
+
+				if (_this.index > _this.$li.length - 1) {
+					_this.index = 0;
+				}
+
+				_this.jump();
+			},
+			jump: function () {
+				var _this = this;
+				clearTimeout(_this.timeoutId);
+
+				var dotIndex = _this.index == 5 ? 0 : _this.index;
+				_this.$dotsli.removeClass().eq(dotIndex).addClass('curr');
+
+				_this.$ul.stop().animate({
+					marginLeft: -600 * _this.index
+				}, 800, function () {
+					if (_this.index == 5) {
+						_this.index = 0;
+						_this.$ul.css('marginLeft', -600 * _this.index);
+					}
+					_this.autoChange();
+				});
+			}
+		}
+
+		var slider = new Slider();
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>同步</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    document.onclick = function () {
+        console.log("我被点击了");
+    };
+
+    function getXHR() {
+        var xhr;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else {
+            xhr = new ActiveXObject('Microsoft.XMLHttp');
+        }
+        return xhr;
+    }
+
+
+    function request(filename, callback) {
+        var xhr = getXHR();
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState == 4 && xhr.status == 200) {
+                callback(xhr);
+            }
+        };
+        xhr.open('GET', filename, false);
+        xhr.send();
+    }
+
+    console.log('请求之前');
+    request('file.txt', function (xhr) {
+        console.log('回调了');
+        console.log(xhr.responseText);
+    });
+    console.log('请求之后');
+
+</script>
+</body>
+</html>

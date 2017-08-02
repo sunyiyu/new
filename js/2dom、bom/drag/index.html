@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            position: relative;
+            margin: 10px auto;
+            width: 800px;
+            height: 500px;
+            background-color: #DDD;
+        }
+        #box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 150px;
+            border: 2px solid #CCC;
+            margin: -75px 0 0 -150px;
+            font: 12px/2 Arial;
+            background: #333;
+            color: #FFF;
+        }
+        #box h2 {
+            height: 25px;
+            padding: 0 10px;
+            border-bottom: 2px solid #CCC;
+            font: 12px/25px Arial;
+            text-align: right;
+            background: #222;
+            cursor: move;
+        }
+        #box h2 span {
+            cursor: pointer;
+        }
+        #box p {
+            padding: 0 10px;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+        #box p span {
+            color: #FF0;
+            font-weight: 100;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="box">
+        <h2 class="draggable"><span>点这里回放拖动轨迹</span></h2>
+        <p>Dragging: <span></span></p>
+        <p>offsetLeft: <span></span></p>
+        <p>offsetTop: <span></span></p>
+    </div>
+</div>
+<script type="text/javascript">
+    ////////////////实现拖动api开始////////////////
+    function EventTarget() {
+        // 由所有自定义事件的handler组成的对象
+        this.handlers = {};
+    }
+
+    EventTarget.prototype = {
+        constructor: EventTarget,
+        addHandler: function (type, handler) {
+            // 若该事件没有定义handler，就给该事件的添加一个handler数组
+            if (typeof this.handlers[type] == 'undefined') {
+                this.handlers[type] = [];
+            }
+            // 往handler数组添加handler
+            this.handlers[type].push(handler);
+        },
+
+        fire: function (event) {
+            // 判断事件对象的target属性有没有被指定，没有就默认指向事件本身
+            if (!event.target) {
+                event.target = this;
+            }
+            // 有handler就把事件的所有handler全执行一遍
+            if (this.handlers[event.type] instanceof Array) {
+                var handlers = this.handlers[event.type];
+                for (var i = 0, len = handlers.length; i < len; i++) {
+                    handlers[i](event);
+                }
+            }
+        },
+
+        removeHandler: function (type, handler) {
+            // 有handler就把事件指定的handler移除
+            if (this.handlers[type] instanceof Array) {
+                var handlers = this.handlers[type];
+                for (var i = 0, len = handlers.length; i < len; i++) {
+                    if (handlers[i] === handler) {
+                        break;
+                    }
+                }
+                handlers.splice(i, 1);
+            }
+        }
+    };
+
+    // 转换鼠标事件为拖动事件的单例对象
+    var DragDrop = function () {
+        // 定义拖动事件对象
+        var dragdrop = new EventTarget();
+        // 拖动事件对象
+        var dragTarget = null;
+        var diffX = 0;
+        var diffY = 0;
+
+        // 将鼠标事件转为拖动事件
+        function convertToDragEvent(e) {
+            var target = e.target;
+
+            switch (e.type) {
+                case 'mousedown' :
+                    if (target.className.indexOf('draggable') > -1) {
+                        dragTarget = target;
+                        var dragStartEvent = {
+                            type: 'dragstart',
+                            target: dragTarget,
+                            clientX: e.clientX,
+                            clientY: e.clientY,
+                        };
+                        dragdrop.fire(dragStartEvent);
+
+                        // 获取用户定义的偏差
+                        diffX = dragStartEvent.diffX;
+                        diffY = dragStartEvent.diffY;
+                    }
+                    break;
+                case 'mousemove' :
+                    if (dragTarget !== null) {
+                        dragdrop.fire({
+                            type: 'drag',
+                            target: dragTarget,
+                            clientX: e.clientX,
+                            clientY: e.clientY,
+                            diffX: diffX,
+                            diffY: diffY
+                        });
+                    }
+                    break;
+                case 'mouseup' :
+                    // 因拖放结束也需要事件处理程序，所以需加对象存在性判断以避免空对象报错
+                    if (dragTarget !== null) {
+                        dragdrop.fire({
+                            type: 'dragend',
+                            target: dragTarget,
+                            clientX: e.clientX,
+                            clientY: e.clientY
+                        });
+                        dragTarget = null;
+                    }
+                    break;
+            }
+        }
+
+        // 定义拖动事件是否与鼠标事件关联的接口
+        dragdrop.enable = function () {
+            document.addEventListener('mousedown', convertToDragEvent);
+            document.addEventListener('mousemove', convertToDragEvent);
+            document.addEventListener('mouseup', convertToDragEvent);
+        };
+        dragdrop.disable = function () {
+            document.removeEventListener('mousedown', convertToDragEvent);
+            document.removeEventListener('mousemove', convertToDragEvent);
+            document.removeEventListener('mouseup', convertToDragEvent);
+        };
+
+        return dragdrop;
+    }();
+    ////////////////实现拖动api结束////////////////
+
+    var box = document.getElementById('box');
+    var header = box.getElementsByTagName('h2')[0];
+    var goBackSpan = header.getElementsByTagName('span')[0];
+    var dragInfo = box.getElementsByTagName('p')[0].getElementsByTagName('span')[0];
+    var leftInfo = box.getElementsByTagName('p')[1].getElementsByTagName('span')[0];
+    var topInfo = box.getElementsByTagName('p')[2].getElementsByTagName('span')[0];
+    var dragPos = [];
+
+    // 获取和展示拖动信息
+    function setDargInfo(isDragging) {
+        if (isDragging) {
+            dragInfo.textContent = 'true';
+        } else {
+            dragInfo.textContent = 'false';
+        }
+
+        leftInfo.textContent = box.offsetLeft;
+        topInfo.textContent = box.offsetTop;
+        dragPos.push([box.offsetLeft, box.offsetTop]);
+    }
+
+    // 初始化拖动信息
+    setDargInfo(false);
+
+    // 开启拖动
+    DragDrop.enable();
+
+    // 给拖动开始事件添加处理函数，设置坐标偏差
+    DragDrop.addHandler('dragstart', function (e) {
+        var target = e.target;
+
+        if (target === header) {
+            e.diffX = e.clientX - box.offsetLeft;
+            e.diffY = e.clientY - box.offsetTop;
+
+            setDargInfo(true);
+        }
+    });
+
+    // 给拖动过程添加处理函数
+    DragDrop.addHandler('drag', function (e) {
+        var target = e.target;
+
+        if (target === header) {
+            // 将原先用来居中的marign清0，确保定位准确
+            box.style.margin = 0;
+            var left = e.clientX - e.diffX;
+            var top = e.clientY - e.diffY;
+            var container = document.getElementById('container');
+
+            // 控制拖动范围在容器内
+            if (left <= 0) {
+                box.style.left = 0;
+            } else if (left > container.offsetWidth - box.offsetWidth) {
+                box.style.left = container.offsetWidth - box.offsetWidth + 'px';
+            } else {
+                box.style.left = left + 'px';
+            }
+
+            if (top <= 0) {
+                box.style.top = 0;
+            } else if (top > container.offsetHeight - box.offsetHeight) {
+                box.style.top = container.offsetHeight - box.offsetHeight + 'px';
+            } else {
+                box.style.top = top + 'px';
+            }
+
+            setDargInfo(true);
+        }
+    });
+
+    // 给拖动结束事件添加处理函数
+    DragDrop.addHandler('dragend', function (e) {
+        var target = e.target;
+
+        if (target === header) {
+            setDargInfo(false);
+        }
+    });
+
+    // 定时回放
+    function goBack() {
+        if (dragPos.length) {
+            var pos = dragPos.pop();
+            // 将原先用来居中的marign清0，确保定位准确
+            box.style.margin = 0;
+            box.style.left = pos[0] + 'px';
+            box.style.top = pos[1] + 'px';
+            leftInfo.textContent = box.offsetLeft;
+            topInfo.textContent = box.offsetTop;
+            setTimeout(goBack, 60);
+        } else {
+            DragDrop.enable();
+        }
+    }
+
+    goBackSpan.onclick = function () {
+        // 回放时禁止拖动
+        DragDrop.disable();
+        goBack();
+    };
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .xiaoming {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            animation: go 4s infinite linear;
+            /*infinite无限的，也可写数字几次*/
+            /*linear匀速*/
+        }
+        @keyframes go {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="xiaoming">
+        <img src="images/cd.png" alt="">
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+@media (max-width: 768px) {
+    .navbar-collapse .input-group:first-child {
+        margin-bottom: 5px;
+    }
+}
+
+body {
+    min-width: 550px;
+}
+
+.category-nav {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sort-nav {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.seller-list .star {
+    color: #ff2d4b;
+}

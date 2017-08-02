@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #container {
+            position: relative;
+            width: 800px;
+            height: 300px;
+            padding: 10px;
+            margin: 0 auto;
+            background-color: #DDD;
+            font: 14px simHei;
+            color: #282;
+        }
+        #block {
+            position: absolute;
+            top: 60px;
+            left: 600px;
+            width: 50px;
+            height: 50px;
+            background-color: #F00;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <p id="info">
+        红色方块为键盘操作区域，您可以进行如下操作：
+        <br><br>
+        上：↑ 下：↓ 左：← 右：→
+        <br><br>
+        Ctrl + 1 : 背景变为绿色<br>
+        Ctrl + 2 : 背景变为黄色<br>
+        Ctrl + 3 : 背景变为蓝色<br>
+        Ctrl + ↑ : 放大<br>
+        Ctrl + ↓ : 缩小<br>
+    </p>
+    <div id="block"></div>
+</div>
+<script type="text/javascript">
+    // 缓存之前按下的按键，实现构造组合键
+    var isPress = {
+        ctrl: false,
+        leftArrow: false,
+        rightArrow: false,
+        upArrow: false,
+        downArrow: false,
+    };
+
+    // 限制方块的范围和大小
+    function limit(div, container) {
+        var divWidth = div.offsetWidth;
+        var divHeight = div.offsetHeight;
+        var containerWidth = container.offsetWidth;
+        var containerHeight = container.offsetHeight;
+
+        // 防宽高溢出
+        divWidth >= containerWidth && (div.style.height = div.style.width = containerWidth + 'px');
+        divHeight >= containerHeight && (div.style.width = div.style.height = containerHeight + 'px');
+
+        //防止左侧溢出
+        div.offsetLeft <= 0 && (div.style.left = 0);
+        //防止顶部溢出
+        div.offsetTop <= 0 && (div.style.top = 0);
+        //防止右侧溢出
+        containerWidth - div.offsetLeft - divWidth <= 0 && (div.style.left = containerWidth - divWidth + 'px');
+        //防止底部溢出
+        containerHeight - div.offsetTop - divHeight <= 0 && (div.style.top = containerHeight - divHeight + 'px');
+    }
+
+    // 使用setInterval来处理运动，效果更流畅
+    setInterval(function () {
+        var container = document.getElementById('container');
+        var block = document.getElementById('block');
+        var left = block.offsetLeft;
+        var top = block.offsetTop;
+
+        if (isPress.leftArrow) {
+            block.style.left = left - 10 + 'px';
+        } else if (isPress.rightArrow) {
+            block.style.left = left + 10 + 'px';
+        }
+
+        if (isPress.upArrow) {
+            block.style.top = top - 10 + 'px';
+        } else if (isPress.downArrow) {
+            block.style.top = top + 10 + 'px';
+        }
+
+        limit(block, container);
+    }, 30);
+
+    document.onkeydown = function (e) {
+        // 阻止默认事件
+        e.preventDefault();
+
+        // 获取原样式
+        var block = document.getElementById('block');
+        var left = block.offsetLeft;
+        var top = block.offsetTop;
+        var oldHeight = block.offsetHeight;
+        var oldWidth = block.offsetWidth;
+
+        switch (e.keyCode) {
+            case 37:
+                isPress.leftArrow = true;
+                break;
+            case 38:
+                if (isPress.ctrl) {
+                    block.style.height = oldHeight * 2 + 'px';
+                    block.style.width = oldWidth * 2 + 'px';
+                    // 使方块的中心仍在原位置
+                    block.style.left = left - oldHeight / 2 + 'px';
+                    block.style.top = top - oldWidth / 2 + 'px';
+                } else {
+                    isPress.upArrow = true;
+                }
+                break;
+            case 39:
+                isPress.rightArrow = true;
+                break;
+            case 40:
+                if (isPress.ctrl) {
+                    block.style.height = oldHeight / 2 + 'px';
+                    block.style.width = oldWidth / 2 + 'px';
+                    block.style.left = left + oldHeight / 4 + 'px';
+                    block.style.top = top + oldWidth / 4 + 'px';
+                } else {
+                    isPress.downArrow = true;
+                }
+                break;
+            case 17:
+                isPress.ctrl = true;
+                break;
+            // 注意和数字键盘上数字的键码不一样！
+            case 49:
+                if (isPress.ctrl) {
+                    block.style.backgroundColor = '#0f0';
+                }
+                break;
+            case 50:
+                if (isPress.ctrl) {
+                    block.style.backgroundColor = '#ff0';
+                }
+                break;
+            case 51:
+                if (isPress.ctrl) {
+                    block.style.backgroundColor = '#00f';
+                }
+                break;
+        }
+    };
+
+    document.onkeyup = function (e) {
+        switch (e.keyCode) {
+            case 37:
+                isPress.leftArrow = false;
+                break;
+            case 38:
+                isPress.upArrow = false;
+                break;
+            case 39:
+                isPress.rightArrow = false;
+                break;
+            case 40:
+                isPress.downArrow = false;
+                break;
+            case 17:
+                isPress.ctrl = false;
+        }
+    };
+</script>
+</body>
+</html>

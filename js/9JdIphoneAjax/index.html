@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title>Title</title>
+    <style>
+        .myp{
+            width: 100px;
+            height: 40px;
+            border: 1px solid blue;
+        }
+        div{
+            width: 100px;
+            height: 10px;
+            background-color: #000;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<p class="myp"></p>
+<!--<select id="selected">-->
+    <!--<option class="aa" value="2017年7月24">2017年7月24</option>-->
+    <!--<option class="aa" value="2017年7月25">2017年7月25</option>-->
+    <!--<option class="aa" value="2017年7月26">2017年7月26</option>-->
+    <!--<option class="aa" value="2017年7月27">2017年7月27</option>-->
+<!--</select>-->
+<div></div>
+<div></div>
+<div></div>
+</body>
+<script src="js/jquery.js"></script>
+<script>
+    $('div').click(function () {
+        $nnn = $(this).css('backgroundColor');
+//                console.log($nnn);
+        $('.myp').css('backgroundColor', $nnn)
+    }
+    )
+
+
+</script>
+</html>
