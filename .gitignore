@@ -5,6 +5,12 @@
 # IntelliJ project files
 .idea
 *.iml
-node_modules
+.hg
+.svn
+.CVS
+node_modules/
+jscoverage_lib/
+bower_components/
+dist/
 out
 gen
