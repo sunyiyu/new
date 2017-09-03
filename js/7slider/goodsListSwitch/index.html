@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<div class="goods-list J-goods-list">
+	<ul>
+		<li><img src="images/1.jpg"></li>
+		<li><img src="images/2.jpg"></li>
+		<li><img src="images/3.jpg"></li>
+		<li><img src="images/4.jpg"></li>
+		<li><img src="images/5.jpg"></li>
+		<li><img src="images/6.jpg"></li>
+		<li><img src="images/7.jpg"></li>
+		<li><img src="images/8.jpg"></li>
+		<li><img src="images/9.jpg"></li>
+		<li><img src="images/10.jpg"></li>
+		<li><img src="images/11.jpg"></li>
+		<li><img src="images/12.jpg"></li>
+		<li><img src="images/13.jpg"></li>
+		<li><img src="images/14.jpg"></li>
+		<li><img src="images/15.jpg"></li>
+		<li><img src="images/16.jpg"></li>
+		<li><img src="images/17.jpg"></li>
+		<li><img src="images/18.jpg"></li>
+		<li><img src="images/8.jpg"></li>
+		<li><img src="images/9.jpg"></li>
+		<li><img src="images/10.jpg"></li>
+	</ul>
+	<div class="btns">
+		<a href="javascript:;" class="prev-btn J-prev-btn btn">&lt;</a>
+		<a href="javascript:;" class="next-btn J-next-btn btn">&gt;</a>
+	</div>
+</div>
+<div class="goods-list goods-list2 J-goods-list2">
+	<ul>
+		<li><img src="images/1.jpg"></li>
+		<li><img src="images/2.jpg"></li>
+		<li><img src="images/3.jpg"></li>
+		<li><img src="images/4.jpg"></li>
+		<li><img src="images/5.jpg"></li>
+		<li><img src="images/6.jpg"></li>
+		<li><img src="images/7.jpg"></li>
+		<li><img src="images/8.jpg"></li>
+		<li><img src="images/9.jpg"></li>
+		<li><img src="images/10.jpg"></li>
+		<li><img src="images/11.jpg"></li>
+		<li><img src="images/12.jpg"></li>
+		<li><img src="images/13.jpg"></li>
+		<li><img src="images/14.jpg"></li>
+		<li><img src="images/15.jpg"></li>
+		<li><img src="images/16.jpg"></li>
+		<li><img src="images/17.jpg"></li>
+		<li><img src="images/18.jpg"></li>
+	</ul>
+	<div class="btns">
+		<a href="javascript:;" class="prev-btn J-prev-btn btn">&lt;</a>
+		<a href="javascript:;" class="next-btn J-next-btn btn">&gt;</a>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+
+		function GoodsList(opts) {
+			this.init(opts);
+		}
+
+		GoodsList.prototype = {
+			$goodsList: null,
+			$prevBtn: null,
+			$nextBtn: null,
+			$ul: null,
+			$li: null,
+			index: 0,//当前这一页第一个元素的下标
+			pageSize: 6,//每一页有多少个元素
+			init: function (opts) {
+				var _this = this;
+				_this.$goodsList = opts.$target;
+				_this.$prevBtn = _this.$goodsList.find('.J-prev-btn');
+				_this.$nextBtn = _this.$goodsList.find('.J-next-btn');
+				_this.$ul = _this.$goodsList.find('ul');
+				_this.$li = _this.$ul.find('li');
+
+				_this.index = 0;
+				$.extend(_this, opts);
+
+				_this.bindEvent();
+			},
+			bindEvent: function () {
+				var _this = this;
+				_this.$prevBtn.click(function () {
+					_this.change(_this.index - _this.pageSize);
+				});
+
+				_this.$nextBtn.click(function () {
+					_this.change(_this.index + _this.pageSize);
+				});
+			},
+			change: function (index) {
+				var _this = this;
+
+				if(index < 0) {
+					index = 0;
+				}
+
+				if(index > _this.$li.length - _this.pageSize) {
+					index = _this.$li.length - _this.pageSize;//把最后的补上
+//					index = Math.floor((_this.$li.length - 1) / _this.pageSize) * _this.pageSize;//翻一整页
+				}
+
+				_this.index = index;
+				_this.$ul.animate({
+					marginLeft: -index * _this.$li.outerWidth(true)
+				}, 500, 'easeOutBack');
+			}
+		};
+
+		var goodsList = new GoodsList({
+			$target: $('.J-goods-list'),
+			pageSize: 4
+		});
+		var goodsList2 = new GoodsList({
+			$target: $('.J-goods-list2')
+		});
+	});
+</script>
+</body>
+</html>
